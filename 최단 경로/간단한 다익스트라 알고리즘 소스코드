@@ -1,0 +1,50 @@
+import sys
+input = sys.stdin.readline
+INF = int(1e9)  # 무한
+
+n, m = map(int, input().split())
+start = int(input())
+G = [[] for i in range(n + 1)]  # 각 노드에 대한 정보
+visited = [0] * (n + 1)  # 방문한 적 있는지에 대한
+distance = [INF] * (n + 1)  # 최단 거리 테이블 모두 무한으로 초기화
+
+for _ in range(m):
+    a, b, c = map(int, input().split())  # 간선
+    G[a].append((b, c))  # a 에서 b로 갈 때 비용 c
+
+
+def get_smallest_n():
+    min_v = INF
+    index = 0
+
+    for i in range(1, n + 1):
+        if distance[i] < min_v and not visited[i]:  # distance[i]가 무한보다 작고 방문한적 없는 경우
+            min_v = distance[i]  # distance값을 min_v로 설정
+            index = i
+    return index
+
+
+def dijkstra(start):
+    distance[start] = 0  # 시작 노드에 대한 초기화
+    visited[start] = 1  # 시작 노드에 대한 방문처리
+    for j in G[start]:
+        distance[j[0]] = j[1]
+
+    for i in range(n - 1):
+        now = get_smallest_n()
+        visited[now] = 1
+
+        for j in G[now]:
+            cost = distance[now] + j[1]
+
+            if cost < distance[j[0]]:
+                distance[j[0]] = cost
+
+
+dijkstra(start)
+
+for i in range(1, n + 1):
+    if distance[i] == INF:
+        print('INF')
+    else:
+        print(distance[i])
