@@ -1,0 +1,27 @@
+INF = int(1e9)
+
+n, m = map(int, input().split())
+G = [[INF]*(n+1) for _ in range(n+1)]
+
+for a in range(1, n+1):
+    for b in range(1, n+1):
+        if a == b: #자기 자신
+            G[a][b] = 0
+
+for _ in range(m):
+    n1, n2 = map(int, input().split()) #간선 받아주기
+    G[n1][n2] = G[n2][n1] = 1 #양방향 통행 가능
+
+x, k = map(int, input().split())
+
+for k in range(1, n+1): #점화식
+    for n1 in range(1, n+1):
+        for n2 in range(1, n+1):
+            G[n1][n2] = min(G[n1][n2], G[n1][k] + G[k][n2])
+
+distance = G[1][k] + G[k][x] #결과 출력
+
+if distance >= INF:
+    print(-1)
+else:
+    print(distance)
