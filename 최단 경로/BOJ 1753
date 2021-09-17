@@ -1,0 +1,35 @@
+import sys
+import heapq
+input = sys.stdin.readline
+
+v, e = map(int, input().split())
+k = int(input()) #시작점
+INF = int(1e9)
+dp = [INF] * (v+1) #가중치
+heap = []
+G = [[] for _ in range(v+1)]
+
+for _ in range(e):
+    u, v, w = map(int, input().split())
+    G[u].append((w, v))
+
+def Di(start):
+    dp[start] = 0 #시작점 0
+    heapq.heappush(heap, (0, start))
+
+    while heap: #heap에 원소 존재할 동안
+        weigt, now = heapq.heappop(heap)
+
+        if dp[now] < weigt: #현재 가중치가 더 크면 무시
+            continue
+
+        for w, next_node in G[now]:
+            next_weigt = w + weigt
+
+            if next_weigt < dp[next_node]:
+                dp[next_node] = next_weigt
+                heapq.heappush(heap, (next_weigt, next_node))
+
+Di(k)
+for i in dp[1:]:
+    print(i if i != INF else "INF")
