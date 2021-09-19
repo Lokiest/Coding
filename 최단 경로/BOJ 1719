@@ -1,0 +1,26 @@
+import sys
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+INF = int(1e9)
+lst = [[INF]*n for _ in range(n)]
+pre_node = [[0]*n for _ in range(n)]
+
+for _ in range(m):
+    a, b, c = map(int, input().split())
+    lst[a - 1][b - 1] = min(lst[a - 1][b - 1], c)
+    lst[b - 1][a - 1] = min(lst[b - 1][a - 1], c)
+    pre_node[a - 1][b - 1] = b
+    pre_node[b - 1][a - 1] = a
+
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            if lst[i][j] > lst[i][k] + lst[k][j]:
+                lst[i][j] = lst[i][k] + lst[k][j]
+                pre_node[i][j] = pre_node[i][k]
+
+for i in range(n):
+    pre_node[i][i] = '-'
+for j in pre_node:
+    print(*j)
