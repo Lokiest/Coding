@@ -1,0 +1,37 @@
+import sys
+import heapq
+input = sys.stdin.readline
+
+n = int(input())
+m = int(input())
+G = [[] for _ in range(n+1)]
+INF = int(1e9)
+dp = [INF for _ in range(n+1)]
+
+for _ in range(m):
+    start, end, cost = map(int, input().split())
+    G[start].append((end, cost)) #start에 end, cost 저장
+
+t1, t2 = map(int, input().split()) #도착점, 출발점 도시번호
+
+def Di(t1):
+    dp[t1] = 0 #첫 지점 0으로 초기화
+    heap = []
+    heapq.heappush(heap, (0, t1)) #첫 지점 heap에 추가
+
+    while heap:
+        dist, now = heapq.heappop(heap)
+
+        if dp[now] < dist: #dist값 즉 빼낸 값이 더 클 경우 무시
+            continue
+
+        for node in G[now]: 
+            c = dist + node[1]
+
+            if dp[node[0]] > c:
+                dp[node[0]] = c
+                heapq.heappush(heap, (c, node[0]))
+
+Di(t1)
+
+print(dp[t2]) #종료 지점만 출력
