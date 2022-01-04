@@ -4,15 +4,14 @@ Seg_tree = [0] * (len(lst) * 4)
 
 
 # <세그먼트 트리를 배열의 각 구간 합으로 채워주기>
-# index : 세그먼트 트리의 인덱스 (무조건 1부터 시작)
 
-def Seg(start, end, index):
-    # 가장 끝에 도달했으면 lst 삽입
+def Seg(start, end, index): # index : 세그먼트 트리의 인덱스 (무조건 1부터 시작)
+    # 가장 끝에 도착하면 lst 삽입
     if start == end:
         Seg_tree[index] = lst[start]
         return Seg_tree[index]
     mid = (start + end) // 2
-    # 좌측 노드와 우측 노드를 채워주면서 부모 노드의 값도 채워준다.
+    # 좌측 노드와 우측 노드를 채워주면서 부모 노드의 값도 채워주기
     Seg_tree[index] = Seg(start, mid, index * 2) + Seg(mid + 1, end, index * 2 + 1)
     return Seg_tree[index]
 
@@ -27,17 +26,14 @@ def interval_sum(start, end, index, left, right):
     # 범위 안에 있는 경우
     if left <= start and right >= end:
         return Seg_tree[index]
-    # 그렇지 않다면 두 부분으로 나누어 합을 구하기
+    # 그렇지않다면 두 부분으로 나누어 합을 구하기
     mid = (start + end) // 2
-    # start와 end가 변하면서 구간 합인 부분을 더해준다고 생각하면 된다.
+    # start와 end가 변하면서 구간 합인 부분을 더해준다고 생각
     return interval_sum(start, mid, index * 2, left, right) + interval_sum(mid + 1, end, index * 2 + 1, left, right)
 
 
 # <특정 원소의 값을 수정하는 함수>
-# 특정 원소를 수정하면 구간 합이 당연히 달라진다.
-# 이때, 해당 원소를 포함하고 있는 모든 구간 합 노드들을 갱신해주면 된다. 
-# (즉, 전체가 아닌 부분적인 노드들만 바꿔주면 된다)
-# start : 시작 인덱스, end : 마지막 인덱스
+
 # what : 구간 합을 수정하고자 하는 노드
 # value : 수정할 값
 def update(start, end, index, what, value):
@@ -54,14 +50,14 @@ def update(start, end, index, what, value):
 
 
 Seg(0, len(lst) - 1, 1)
-print(interval_sum(0, len(lst) - 1, 1, 0, 9))  # 0부터 9까지의 구간 합 (1 + 2 + ... + 9 + 10)
-print(interval_sum(0, len(lst) - 1, 1, 0, 2))  # 0부터 2까지의 구간 합 (1 + 2 + 3)
-print(interval_sum(0, len(lst) - 1, 1, 6, 7))  # 0부터 2까지의 구간 합 (7 + 8)
+print(interval_sum(0, len(lst) - 1, 1, 0, 9))  # 0부터 9까지의 구간 합
+print(interval_sum(0, len(lst) - 1, 1, 0, 2))  # 0부터 2까지의 구간 합
+print(interval_sum(0, len(lst) - 1, 1, 6, 7))  # 0부터 2까지의 구간 합
 
 # lst[0]을 +4만큼 수정
 update(0, len(lst) - 1, 1, 0, 4)
-print(interval_sum(0, len(lst) - 1, 1, 0, 2))   # 0부터 2까지의 구간 합 ((1 + 4) + 2 + 3)
+print(interval_sum(0, len(lst) - 1, 1, 0, 2))   # 0부터 2까지의 구간 합
 
 # lst[9]를 -11만큼 수정
 update(0, len(lst) - 1, 1, 9, -11)
-print(interval_sum(0, len(lst) - 1, 1, 8, 9))   # 8부터 9까지의 구간 합 (9 + (10 - 11))
+print(interval_sum(0, len(lst) - 1, 1, 8, 9))   # 8부터 9까지의 구간 합
