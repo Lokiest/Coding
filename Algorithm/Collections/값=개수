@@ -1,0 +1,9 @@
+import collections
+
+Excounter = collections.Counter(Loki=5, Thor=2, Captain=3)
+print(Excounter)
+# ('Loki' x 5번) + ('Thor' x 2번) + ('Captain' x 3번) 연산을 수행한다.
+print(sorted(Excounter.elements()))
+
+>>> Counter({'Loki': 5, 'Captain': 3, 'Thor': 2})
+>>> ['Loki', 'Loki', 'Loki', 'Loki', 'Loki', 'Thor', 'Thor', 'Captain', 'Captain', 'Captain']
