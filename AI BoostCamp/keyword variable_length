@@ -1,0 +1,6 @@
+def kwargs_test_3(one, two, *args, **kwargs):
+
+    print(one+two+sum(args))
+    print(kwargs)
+    
+kwargs_test_3(3,4,5,6,7,8,9, first=3, second=4, third=5)
