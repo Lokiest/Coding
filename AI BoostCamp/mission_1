@@ -1,0 +1,57 @@
+#Q1
+num_list = [1, 5, 7, 15, 16, 22, 28, 29]
+
+def get_odd_num(num_list):
+    return [i for i in num_list if (i % 2 != 0)]
+
+print(get_odd_num(num_list))
+
+#Q2
+sentence = "way a is there will a is there where"
+
+def reverse_sentence(sentence):
+    return " ".join(reversed(sentence.split(" ")))
+
+print(reverse_sentence(sentence))
+
+#Q3
+score = [(100, 100), (95, 90), (55, 60), (75, 80), (70, 70)]
+
+def get_avg(score):
+    for i in range(len(score)):
+        print("{0} 번, 평균 : {1}".format(i + 1, (score[i][0] + score[i][1]) / 2))
+        
+get_avg(score)
+
+#Q4
+from collections import Counter
+dict_first = {"사과" : 30, "배" : 15, "감" : 10, "포도" : 10}
+dict_second = {"사과" : 5, "감": 25, "배" : 15, "귤" : 25}
+
+def merge_dict(dict_first, dict_second):
+    dict_first_count = Counter(dict_first)
+    dict_second_count = Counter(dict_second)
+    total_count = dict_first_count + dict_second_count
+    print(dict(total_count))
+    
+merge_dict(dict_first, dict_second)
+
+#Q5
+inputs = "cat32dog16cow5"
+
+def find_string(inputs):
+    word = ""
+    result = []
+    
+    for i in range(len(inputs)):
+        if inputs[i].isdigit() == True:
+            if len(word) > 0:
+                result.append(word)
+                word = ""
+            
+        else:
+            word += inputs[i]
+            
+    return result
+
+find_string(inputs)
