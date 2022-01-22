@@ -1,0 +1,41 @@
+import heapq
+import sys
+input = sys.stdin.readline
+INF = int(1e9)  # 무한
+
+n, m, x= map(int, input().split())
+G = [[] for i in range(n + 1)]  # 각 노드에 대한 정보
+
+for _ in range(m):
+    a, b, cost = map(int, input().split())  # 간선
+    G[a].append((b, cost))  # a 에서 b로 갈 때 비용 c
+
+
+def dijkstra(start):
+    que = []
+    distance = [INF] * (n + 1)  # 최단 거리 테이블 모두 무한으로 초기화
+    heapq.heappush(que, (0, start)) #시작 노드는 0으로 설정
+    distance[start] = 0
+
+    while que: #큐가 비어있지 않다면
+        dist, now = heapq.heappop(que) #가장 최단거리인 노드 정보 꺼내기
+
+        if distance[now] < dist: #이미 처리된 노드라면 무시
+            continue
+
+        for node_index, node_cost in G[now]: #인접한 노드들 확인
+            cost = dist + node_cost
+
+            if cost < distance[node_index]: #다른 노드로 이동하는 거리가 더 짧은 경우
+                distance[node_index] = cost
+                heapq.heappush(que, (cost, node_index))
+
+    return distance
+
+result = 0
+for i in range(1, n + 1):
+    go = dijkstra(i)
+    back = dijkstra(x)
+    result = max(result, go[x] + back[i])
+
+print(result)
