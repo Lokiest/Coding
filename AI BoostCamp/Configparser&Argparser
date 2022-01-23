@@ -1,0 +1,25 @@
+# configparser file
+import configparser
+
+config = configparser.ConfigParser()
+config.sections()
+
+config.read('example.cfg')
+config.sections()
+
+for key in config['SectionOne']:
+    print(key)
+
+# argparser
+import argparse
+
+parser = argparse.ArgumentParser(description='Sum two integers.')
+
+parser.add_argument('-a', "--a_value", dest=”A_value", help="A integers", type=int)
+parser.add_argument('-b', "--b_value", dest=”B_value", help="B integers", type=int)
+
+args = parser.parse_args()
+print(args)
+print(args.a)
+print(args.b)
+print(args.a + args.b)
