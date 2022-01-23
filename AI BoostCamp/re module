@@ -1,0 +1,22 @@
+# re
+import re
+import urllib.request
+
+url ="https://bit.ly/3rxQFS4"
+html = urllib.request.urlopen(url)
+html_contents = str(html.read())
+id_results = re.findall(r"([A-Za-z0-9]+\*\*\*)", html_contents)
+#findall 전체 찾기, 패턴대로 데이터 찾기
+
+for result in id_results:
+    print (result)
+
+url = "http://www.google.com/googlebooks/uspto-patents-grants-text.html"
+#url 값 입력
+html = urllib.request.urlopen(url) # url 열기
+html_contents = str(html.read().decode("utf8"))
+# html 파일 읽고, 문자열로 변환
+
+url_list = re.findall(r"(http)(.+)(zip)", html_contents)
+for url in url_list:
+    print("".join(url)) # 출력된 Tuple 형태 데이터 str으로 join
