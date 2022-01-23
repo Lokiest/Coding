@@ -1,0 +1,32 @@
+#try ~ exception ~
+for i in range(10):
+    try:
+        print(10 / i)
+    except ZeroDivisionError as e:
+        print(e)
+        print("Not divided by 0")
+
+#try ~ exception ~ finally ~
+try:
+    for i in range(1, 10):
+        result = 10 // i
+        print(result)
+except ZeroDivisionError:
+    print("Not divided by 0")
+finally:
+    print("종료되었습니다.")
+
+#raise ~
+while True:
+    value = input("변환할 정수 값을 입력해주세요")
+    for digit in value:
+        if digit not in "0123456789":
+            raise ValueError("숫자값을 입력하지 않으셨습니다")
+    print("정수값으로 변환된 숫자 -", int(value))
+
+#assert ~
+def get_binary_nmubmer(decimal_number):
+    assert isinstance(decimal_number, int)
+    return bin(decimal_number)
+
+print(get_binary_nmubmer(10))
