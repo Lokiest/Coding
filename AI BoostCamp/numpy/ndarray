@@ -1,0 +1,45 @@
+import numpy as np
+
+#create array
+test_array = np.array(["1", "4", 5, 8], float)
+test_array
+
+type(test_array[3])
+
+test_array = np.array([1, 4, 5, "8"], np.float32) # String Type의 데이터를 입력해도
+test_array
+
+type(test_array[3])
+
+np.array([[1, 4, 5, "8"]], np.float32).shape
+test_array.shape
+
+#array shape
+vector  = [1,2,3,4]
+np.array(vector, int).shape
+
+matrix  = [[1,2,5,8],[1,2,5,8],[1,2,5,8]]
+np.array(matrix, int).shape
+
+tensor  = [[[1,2,5,8],[1,2,5,8],[1,2,5,8]], 
+           [[1,2,5,8],[1,2,5,8],[1,2,5,8]], 
+           [[1,2,5,8],[1,2,5,8],[1,2,5,8]], 
+           [[1,2,5,8],[1,2,5,8],[1,2,5,8]]]
+np.array(tensor, int).shape
+
+np.array(tensor, int).ndim
+np.array(tensor, int).size
+
+#numpy dtype
+a = np.array([[1, 2, 3], [4.5, 5, 6]], dtype=int)
+
+np.array([[1, 2, 3], [4.5, "5", "6"]], dtype=np.float32)
+
+np.array([[1, 2, 3], [4.5, "5", "6"]], 
+         dtype=np.float32).nbytes
+         
+np.array([[1, 2, 3], [4.5, "5", "6"]], 
+         dtype=np.int8).nbytes
+         
+np.array([[1, 2, 3], [4.5, "5", "6"]], 
+         dtype=np.float64).nbytes
