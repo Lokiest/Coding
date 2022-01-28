@@ -1,0 +1,23 @@
+import numpy as np
+
+#reshape
+test_matrix = [[1,2,3,4], [1,2,5,8]]
+np.array(test_matrix).shape
+
+np.array(test_matrix).reshape(2,2,2)
+
+test =np.array(test_matrix).reshape(8,)
+test
+
+test.reshape(-1, 1)
+
+np.array(test_matrix).reshape(2,4).shape
+
+np.array(test_matrix).reshape(2,-1).shape
+
+np.array(test_matrix).reshape(2,2,2)
+np.array(test_matrix).reshape(2,2,2).shape
+
+#flatten
+test_matrix = [[[1,2,3,4], [1,2,5,8]], [[1,2,3,4], [1,2,5,8]]]
+np.array(test_matrix).flatten()
