@@ -1,0 +1,60 @@
+import numpy as np
+
+#array operations
+test_a = np.array([[1,2,3],[4,5,6]], float)
+
+test_a + test_a # Matrix + Matrix 연산
+test_a - test_a # Matrix - Matrix 연산
+test_a * test_a # Matrix내 element들 간 같은 위치에 있는 값들끼리 연산
+
+matrix_a = np.arange(1,13).reshape(3,4)
+matrix_a * matrix_a
+
+#dot product
+test_a = np.arange(1,7).reshape(2,3)
+test_b = np.arange(7,13).reshape(3,2)
+
+test_a.dot(test_b)
+
+test_a = np.arange(1,7).reshape(2,3)
+test_a
+
+test_a.transpose() 
+
+test_a.T
+
+test_a.T.dot(test_a) # Matrix 간 곱셈
+
+#broadcasting
+test_matrix = np.array([[1,2,3],[4,5,6]], float)
+scalar = 3
+
+test_matrix + scalar # Matrix - Scalar 덧셈
+test_matrix - scalar # Matrix - Scalar 뺄셈
+test_matrix * 5 # Matrix - Scalar 곱셈
+test_matrix / 5 # Matrix - Scalar 나눗셈
+test_matrix // 0.2 # Matrix - Scalar 몫
+test_matrix ** 2 # Matrix - Scalar 제곱
+
+test_matrix = np.arange(1,13).reshape(4,3)
+test_vector = np.arange(10,40,10)
+test_matrix+ test_vector
+
+#numpy performance
+def sclar_vector_product(scalar, vector):
+    result = []
+    for value in vector:
+        result.append(scalar * value)
+    return result 
+
+iternation_max = 100000000
+
+vector = list(range(iternation_max))
+scalar = 2
+
+%timeit sclar_vector_product(scalar, vector) # for loop을 이용한 성능
+
+
+
+%timeit [scalar * value for value in range(iternation_max)] # list comprehension을 이용한 성능
+%timeit np.arange(iternation_max) * scalar # numpy를 이용한 성능
