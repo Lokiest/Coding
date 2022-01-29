@@ -1,0 +1,48 @@
+import numpy as np
+
+test_array = np.arange(1,11)
+test_array
+
+#operation in array
+test_array.sum(dtype=np.float)
+test_array = np.arange(1,13).reshape(3,4)
+test_array.sum()
+
+test_array.sum(axis=1)
+test_array.sum(axis=0)
+
+third_order_tensor = np.array([test_array,test_array,test_array])
+third_order_tensor
+
+third_order_tensor.sum(axis=2)
+third_order_tensor.sum(axis=1)
+third_order_tensor.sum(axis=0)
+
+test_array = np.arange(1,13).reshape(3,4)
+test_array
+
+test_array.mean(), test_array.mean(axis=0)
+
+test_array.std(), test_array.std(axis=0)
+
+np.exp(test_array), np.sqrt(test_array)
+
+#concatenate
+a = np.array([1, 2, 3])
+b = np.array([2, 3, 4])
+np.vstack((a,b))
+
+a = np.array([ [1], [2], [3]])
+b = np.array([ [2], [3], [4]])
+np.hstack((a,b))
+
+a = np.array([[1, 2, 3]])
+b = np.array([[2, 3, 4]])
+np.concatenate( (a,b) ,axis=0)
+
+a = np.array([[1, 2], [3, 4]])
+b = np.array([[5, 6]])
+
+np.concatenate( (a,b.T) ,axis=1)
+
+a.tolist()
