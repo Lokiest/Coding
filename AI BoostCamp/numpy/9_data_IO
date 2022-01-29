@@ -1,0 +1,16 @@
+import numpy as np
+
+#LOAD TXT
+a = np.loadtxt("./populations.txt")
+a[:10]
+
+a_int = a.astype(int)
+a_int[:3]
+
+np.savetxt('int_data.csv',a_int, delimiter=",")
+
+#numpy object - npy
+np.save("npy_test", arr=a_int)
+
+npy_array = np.load(file="npy_test.npy")
+npy_array[:3]
