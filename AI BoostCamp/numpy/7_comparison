@@ -1,0 +1,44 @@
+import numpy as np
+
+#all, any
+a = np.arange(10)
+a
+
+a>5
+np.any(a>5), np.any(a<0)
+np.all(a>5) , np.all(a < 10)
+
+#comparison
+test_a = np.array([1, 3, 0], float)
+test_b = np.array([5, 2, 1], float)
+test_a > test_b 
+
+test_a == test_b 
+
+(test_a > test_b).any()
+
+a = np.array([1, 3, 0], float)
+np.logical_and(a > 0, a < 3) # and 조건의 condition
+b = np.array([True, False, True], bool)
+np.logical_not(b) # NOT 조건의 condition
+c = np.array([False, True, False], bool)
+np.logical_or(b, c) # OR 조건의 condition
+
+a
+np.where(a > 0, 3, 2) 
+np.where(a>0)
+
+a = np.arange(5, 15)
+a
+np.where(a>10)
+
+a = np.array([1, np.NaN, np.Inf], float)
+np.isnan(a)
+np.isfinite(a)
+
+#argmax, argmin
+a = np.array([1,2,4,5,8,78,23,3])
+np.argmax(a) , np.argmin(a)
+
+a=np.array([[1,2,4,7],[9,88,6,45],[9,76,3,4]])
+np.argmax(a, axis=1) , np.argmin(a, axis=0)
