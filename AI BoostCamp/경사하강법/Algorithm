@@ -1,0 +1,26 @@
+import numpy as np
+import sympy as sym
+from sympy.abc import x
+
+def func(val):
+  fun = sym.poly(x**2 + 2*x + 3, x)
+  return fun.subs(x, val), fun
+
+def func_gradient(fun, val):
+  _, function = fun(val)
+  diff = sym.diff(function, x)
+  return diff.subs(x, val), diff
+
+def gradient_descent(fun, init_point, lr_rate = 1e-2, epsilson = 1e-5):
+  count = 0
+  val = init_point
+  diff, _ = func_gradient(fun, init_point)
+
+  while np.abs(diff) > epsilson:
+    val = val - lr_rate * diff
+    diff, _ = func_gradient(fun, val)
+    count += 1
+
+    print("함수 : {}, 연산회수 : {}, 최소점 : ({}, {})".format(fun(val)[1], count, val, fun(val)[0]))
+
+gradient_descent(fun = func, init_point = np.random.uniform(-2, 2))
