@@ -1,0 +1,118 @@
+#Q1
+
+#test score, mid = 50, final = 75
+class Score():
+    def __init__(self, mid, final):
+        self.__mid = 50
+        self.__final = 75
+    
+    @property
+    def mid(self):
+        return self.__mid
+    
+    @property
+    def final(self):
+        return self.__final
+
+score = Score(50, 75)
+print((score.mid + score.final) / 2)
+
+
+#Q2
+
+class Car():
+    def __init__(self, fuel, wheels):
+        self.fuel = fuel
+        self.wheels = wheels
+        
+class Bike(Car):
+    def __init__(self, fuel, wheels, size):
+        super().__init__(fuel, wheels)
+        self.size = size
+        
+bike = Bike("gas", 2, "small")
+print(bike.fuel, bike.wheels, bike.size)
+
+#Q3
+
+#파일경로를 file_path로 설정
+file_path = "/Users/parkjuho/Downloads/data-01-test-score.csv"
+
+import csv
+
+def read_file(file_path):
+    f = open(file_path, 'r', encoding='utf-8')
+    rdr = csv.reader(f)
+    for line in rdr:
+        print(line)
+    f.close()
+
+read_file(file_path)
+
+#Q4
+
+import csv
+
+#파일경로를 file_path로 설정
+file_path = "/Users/parkjuho/Downloads/data-01-test-score.csv"
+
+class ReadCSV():
+    def __init__(self, file_path):
+        self.file_path = file_path
+        
+    def read_file(self):
+        score_list = []
+        f = open(self.file_path, 'r')
+        score = csv.reader(f)
+        
+        for line in score:
+            score_list.append(line)
+        return score_list
+
+    def merge_list(self):
+        sum_list = []
+        score = csv.reader(open(self.file_path, 'r'))
+        
+        for line in score:
+            merge = sum(map(int, line))
+            sum_list.append(merge)
+        return sum_list
+        
+read_csv = ReadCSV(file_path)
+print(read_csv.read_file())
+print()
+print(read_csv.merge_list())
+
+#Q5
+
+import csv
+
+#파일경로를 file_path로 설정
+file_path = "/Users/parkjuho/Downloads/data-01-test-score.csv"
+
+class ReadCSV():
+    def __init__(self, file_path):
+        self.file_path = file_path
+        
+    def read_file(self):
+        score_list = []
+        f = open(self.file_path, 'r')
+        score = csv.reader(f)
+        
+        for line in score:
+            score_list.append(line)
+        return score_list
+
+    def merge_list(self):
+        average_list = []
+        score = csv.reader(open(self.file_path, 'r'))
+        
+        for line in score:
+            merge = sum(map(int, line)) / len(line)
+            average_list.append(merge)
+        return average_list
+        
+read_csv = ReadCSV(file_path)
+print(read_csv.read_file())
+print()
+print(read_csv.merge_list())
