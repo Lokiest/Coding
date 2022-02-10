@@ -1,0 +1,47 @@
+from pandas import Series, DataFrame
+import pandas as pd
+import numpy as np
+
+# Example from - https://chrisalbon.com/python/pandas_map_values_to_values.html
+raw_data = {'first_name': ['Jason', 'Molly', 'Tina', 'Jake', 'Amy'],
+        'last_name': ['Miller', 'Jacobson', 'Ali', 'Milner', 'Cooze'],
+        'age': [42, 52, 36, 24, 73],
+        'city': ['San Francisco', 'Baltimore', 'Miami', 'Douglas', 'Boston']}
+df = pd.DataFrame(raw_data, columns = ['first_name', 'last_name', 'age', 'city'])
+df
+
+DataFrame(raw_data, columns = ["age", "city"])
+DataFrame(raw_data, 
+          columns = ["first_name","last_name","age", "city", "debt"]
+         )
+         
+df = DataFrame(raw_data, columns = ["first_name","last_name","age", "city", "debt"])
+df.first_name
+
+df["first_name"]
+
+df.loc[1]
+df["age"].iloc[1:]
+
+
+# Example from - https://stackoverflow.com/questions/31593201/pandas-iloc-vs-ix-vs-loc-explanation
+s = pd.Series(np.nan, index=[49,48,47,46,45, 1, 2, 3, 4, 5])
+s
+
+s.iloc[:3]
+df.age > 40
+df.debt = df.age > 40
+df
+
+values = Series(data=["M","F","F"],index=[0,1,3])
+values
+
+df["sex"] = values
+df
+df.T
+df.values
+df.to_csv()
+
+del df["debt"]
+df
+
