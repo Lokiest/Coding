@@ -1,0 +1,46 @@
+import pandas as pd
+from pandas import Series
+from pandas import DataFrame
+
+import numpy as np
+
+#Built-in functions
+df = pd.read_csv("data/wages.csv")
+df.describe()
+
+df.race.unique()
+
+dict(enumerate(sorted(df["race"].unique())))
+
+
+value = list(map(int, np.array(list(enumerate(df["race"].unique())))[:, 0].tolist()))
+key = np.array(list(enumerate(df["race"].unique())), dtype=str)[:, 1].tolist()
+value, key
+
+df["race"].replace(to_replace=key, value=value, inplace=True)
+df["race"]
+
+
+value = list(map(int, np.array(list(enumerate(df["sex"].unique())))[:, 0].tolist()))
+key = np.array(list(enumerate(df["sex"].unique())), dtype=str)[:, 1].tolist()
+value, key
+
+df["sex"].replace(to_replace=key, value=value, inplace=True)
+
+df.sum(axis=0)
+df.sum(axis=1)
+
+df.isnull()
+df.isnull().sum(0)
+
+df.sort_values(["age", "earn"], ascending=False).head(10)
+df.cumsum().head(5)
+df.cummax().head(10)
+
+df.sort_values("age", ascending=False).head(10)
+df.age.corr(df.earn)
+df.age[(df.age<45) & (df.age>15)].corr(df.earn)
+df.age.cov(df.earn)
+df.corr()
+df.corrwith(df.earn)
+df.sex.value_counts(sort=True)
