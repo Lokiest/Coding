@@ -1,0 +1,48 @@
+from pandas import Series, DataFrame
+import pandas as pd
+import numpy as np
+
+list_data = [1,2,3,4,5]
+example_obj = Series(data = list_data)
+example_obj
+
+list_data = [1,2,3,4,5]
+list_name = ["a","b","c","d","e"]
+example_obj = Series(data = list_data, index=list_name)
+example_obj
+
+example_obj.index
+
+example_obj.values
+
+type(example_obj.values)
+
+dict_data = {"a":1, "b":2, "c":3, "d":4, "e":5}
+example_obj = Series(dict_data, dtype=np.float32, name="example_data")
+example_obj
+
+example_obj["a"]
+
+example_obj["a"] = 3.2
+example_obj
+
+example_obj[example_obj > 2]
+
+example_obj * 2
+
+np.exp(example_obj) #np.abs , np.log
+
+"b" in example_obj
+
+example_obj.to_dict()
+example_obj.values
+example_obj.index
+
+example_obj.name = "number"
+example_obj.index.name = "alphabet"
+example_obj
+
+dict_data_1 = {"a":1, "b":2, "c":3, "d":4, "e":5}
+indexes = ["a","b","c","d","e","f","g","h"]
+series_obj_1 = Series(dict_data_1, index=indexes)
+series_obj_1
