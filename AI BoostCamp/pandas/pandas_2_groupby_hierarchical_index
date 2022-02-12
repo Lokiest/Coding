@@ -1,0 +1,84 @@
+import pandas as pd
+import numpy as np
+
+
+#Groupby - basic
+# data from: 
+ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings',
+         'kings', 'Kings', 'Kings', 'Riders', 'Royals', 'Royals', 'Riders'],
+         'Rank': [1, 2, 2, 3, 3,4 ,1 ,1,2 , 4,1,2],
+         'Year': [2014,2015,2014,2015,2014,2015,2016,2017,2016,2014,2015,2017],
+         'Points':[876,789,863,673,741,812,756,788,694,701,804,690]}
+
+df = pd.DataFrame(ipl_data)
+df
+
+df.groupby("Team")["Points"].sum()
+
+#Hierarchical index
+h_index = df.groupby(["Team", "Year"])["Points"].sum()
+h_index
+
+h_index.index
+h_index["Devils":"Kings"]
+
+h_index.unstack()
+
+h_index.swaplevel()
+h_index.swaplevel().sortlevel(0)
+
+h_index.sum(level=0)
+h_index.sum(level=1)
+
+#Groupby - gropuped
+grouped = df.groupby("Team")
+for name,group in grouped:
+    print (type(name))
+    print (type(group))
+    
+grouped.get_group("Riders")
+
+#Aggregation
+grouped.agg(min)
+grouped.agg(np.mean)
+grouped['Points'].agg([np.sum, np.mean, np.std])
+
+#Transofrmation
+score = lambda x: (x - x.mean()) / x.std()
+grouped.transform(score)
+
+df.groupby('Team').filter(lambda x: len(x) >= 3)
+df.groupby('Team').filter(lambda x: x["Points"].max() > 800)
+
+!wget https://www.shanelynn.ie/wp-content/uploads/2015/06/phone_data.csv
+df_phone = pd.read_csv("./data/phone_data.csv")
+df_phone.head()
+
+import dateutil
+df_phone['date'] = df_phone['date'].apply(dateutil.parser.parse, dayfirst=True)
+df_phone.head()
+
+df_phone.groupby('month')['duration'].sum()
+df_phone[df_phone['item'] == 'call'].groupby('month')['duration'].sum()
+
+df_phone.groupby(['month', 'item'])['duration'].sum()
+df_phone.groupby(['month', 'item'])['date'].count().unstack()
+df_phone.groupby('month', as_index=False).agg({"duration": "sum"})
+
+df_phone.groupby(['month', 'item']).agg({'duration':sum,      # find the sum of the durations for each group
+                                     'network_type': "count", # find the number of network type entries
+                                     'date': 'first'})    # get the first date per group
+                                     
+df_phone.groupby(['month', 'item']).agg({'duration': [min],      # find the min, max, and sum of the duration column
+                                     'network_type': "count", # find the number of network type entries
+                                     'date': [min, 'first', 'nunique']})    # get the min, first, and number of unique dates 
+                                     
+grouped = df_phone.groupby('month').agg( {"duration" : [min, max, np.mean]})
+grouped
+
+grouped.columns = grouped.columns.droplevel(level=0)
+grouped
+
+grouped.rename(columns={"min": "min_duration", "max": "max_duration", "mean": "mean_duration"})
+grouped = df_phone.groupby('month').agg( {"duration" : [min, max, np.mean]})
+grouped
