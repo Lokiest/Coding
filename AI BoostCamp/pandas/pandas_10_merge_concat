@@ -1,0 +1,64 @@
+import pandas as pd
+
+#merge
+raw_data = {
+        'subject_id': ['1', '2', '3', '4', '5', '7', '8', '9', '10', '11'],
+        'test_score': [51, 15, 15, 61, 16, 14, 15, 1, 61, 16]}
+df_a = pd.DataFrame(raw_data, columns = ['subject_id', 'test_score'])
+df_a
+
+raw_data = {
+        'subject_id': ['4', '5', '6', '7', '8'],
+        'first_name': ['Billy', 'Brian', 'Bran', 'Bryce', 'Betty'], 
+        'last_name': ['Bonder', 'Black', 'Balwner', 'Brice', 'Btisan']}
+df_b = pd.DataFrame(raw_data, columns = ['subject_id', 'first_name', 'last_name'])
+df_b
+
+pd.merge(df_a, df_b, on='subject_id')
+pd.merge(df_a, df_b, left_on='subject_id', right_on='subject_id')
+pd.merge(df_a, df_b, on='subject_id', how='left')
+pd.merge(df_a, df_b, on='subject_id', how='right')
+pd.merge(df_a, df_b, on='subject_id', how='outer')
+pd.merge(df_a, df_b, on='subject_id', how='inner')
+pd.merge(df_a, df_b, right_index=True, left_index=True)
+
+#concat
+raw_data = {
+        'subject_id': ['1', '2', '3', '4', '5'],
+        'first_name': ['Alex', 'Amy', 'Allen', 'Alice', 'Ayoung'], 
+        'last_name': ['Anderson', 'Ackerman', 'Ali', 'Aoni', 'Atiches']}
+df_a = pd.DataFrame(raw_data, columns = ['subject_id', 'first_name', 'last_name'])
+df_a
+
+raw_data = {
+        'subject_id': ['4', '5', '6', '7', '8'],
+        'first_name': ['Billy', 'Brian', 'Bran', 'Bryce', 'Betty'], 
+        'last_name': ['Bonder', 'Black', 'Balwner', 'Brice', 'Btisan']}
+df_b = pd.DataFrame(raw_data, columns = ['subject_id', 'first_name', 'last_name'])
+df_b
+
+df_new = pd.concat([df_a, df_b])
+df_new.reset_index()
+
+df_a.append(df_b)
+df_new = pd.concat([df_a, df_b], axis=1)
+df_new.reset_index()
+
+#case
+import os
+
+files = [file_name for file_name in os.listdir("./data") if file_name.endswith("xlsx")]
+files.remove("excel-comp-data.xlsx")
+files.remove('df_routes.xlsx')
+files
+
+df_list = [pd.read_excel("data/"+df_filename) for df_filename in files]
+status = df_list[0]
+sales = pd.concat(df_list[1:])
+
+merge_df = pd.merge(status, sales, how="inner", on="account number")
+merge_df.head()
+
+merge_df.groupby(["status","name_x"])["quantity","ext price"].sum().reset_index().sort_values(
+    by=["status","quantity"], ascending=False)
+    
