@@ -1,0 +1,167 @@
+import matplotlib.pyplot as plt
+
+X = range(100)
+Y = range(100)
+plt.plot(X, Y)
+
+
+import numpy as np 
+
+X_1 = range(100)
+Y_1 = [np.cos(value) for value in X]
+
+X_2 = range(100)
+Y_2 = [np.sin(value) for value in X]
+
+plt.plot(X_1, Y_1)
+plt.plot(X_2, Y_2)
+plt.plot(range(100), range(100))
+plt.show()
+
+
+fig = plt.figure() # figure 반환
+fig.set_size_inches(10,10) # 크기지정
+ax_1 = fig.add_subplot(1,2,1) # 두개의 plot 생성
+ax_2 = fig.add_subplot(1,2,2)  # 두개의 plot 생성
+
+ax_1.plot(X_1, Y_1, c="b")  # 첫번째 plot
+ax_2.plot(X_2, Y_2, c="g")  # 두번째 plot
+plt.show() # show & flush
+
+
+#Set color
+X_1 = range(100)
+Y_1 = [value for value in X]
+
+X_2 = range(100)
+Y_2 = [value + 100 for value in X]
+
+plt.plot(X_1, Y_1, color="#000000")
+plt.plot(X_2, Y_2, c="c")
+plt.show()
+
+
+#Set linestyle
+plt.plot(X_1, Y_1, c="b", linestyle="dashed")
+plt.plot(X_2, Y_2, c="r", ls="dotted")
+plt.show()
+
+plt.plot(X_1, Y_1, color="b", linestyle="dashed")
+plt.plot(X_2, Y_2, color="r", linestyle="dotted")
+plt.title("Two lines")
+plt.show()
+
+plt.plot(X_1, Y_1, color="b", linestyle="dashed")
+plt.plot(X_2, Y_2, color="r", linestyle="dotted")
+plt.title('$y = \\frac{ax + b}{test}$')
+plt.show()
+
+plt.plot(X_1, Y_1, color="b", linestyle="dashed")
+plt.plot(X_2, Y_2, color="r", linestyle="dotted")
+plt.title('$y = ax+b$')
+plt.xlabel('$x_line$')
+plt.ylabel('y_line')
+plt.show()
+
+plt.plot(X_1, Y_1, color="b", linestyle="dashed")
+plt.plot(X_2, Y_2, color="r", linestyle="dotted")
+plt.text(50, 70, "Line_1")
+plt.annotate(
+    'line_2', xy=(50, 150), xytext=(20, 175),
+    arrowprops=dict(facecolor='black', shrink=0.05))
+plt.title('$y = ax+b$')
+plt.xlabel('$x_line$')
+plt.ylabel('y_line')
+plt.show()
+
+plt.plot(X_1, Y_1, color="b", linestyle="dashed", label='line_1')
+plt.plot(X_2, Y_2, color="r", linestyle="dotted", label='line_2')
+plt.legend(shadow=True, fancybox=False, loc="upper right")
+plt.title('$y = ax+b$')
+plt.xlabel('$x_line$')
+plt.ylabel('y_line')
+plt.show()
+
+plt.plot(X_1, Y_1, color="b", linestyle="dashed", label='line_1')
+plt.plot(X_2, Y_2, color="r", linestyle="dotted", label='line_2')
+plt.legend(shadow=True, fancybox=True, loc="lower right")
+plt.grid(True, lw=0.4, ls="--", c=".90")
+plt.xlim(-1000, 2000)
+plt.ylim(-1000, 2000)
+plt.show()
+
+plt.plot(X_1, Y_1, color="b", linestyle="dashed", label='line_1')
+plt.plot(X_2, Y_2, color="r", linestyle="dotted", label='line_2')
+plt.grid(True, lw=0.4, ls="--", c=".90")
+plt.legend(shadow=True, fancybox=True, loc="lower right")
+plt.xlim(-100, 200)
+plt.ylim(-200, 200)
+plt.savefig("test.png", c="a")
+plt.show()
+
+
+#Scatter
+data_1 = np.random.rand(512, 2)
+data_2 = np.random.rand(512, 2)
+plt.scatter(data_1[:,0], data_1[:,1], c="b", marker="x")
+plt.scatter(data_2[:,0], data_2[:,1], c="r", marker="o")
+plt.show()
+
+N = 50
+x = np.random.rand(N)
+y = np.random.rand(N)
+colors = np.random.rand(N)
+area = np.pi * (15 * np.random.rand(N))**2 
+plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+plt.show()
+
+#Bar chart
+data = [[5., 25., 50., 20.],
+        [4., 23., 51., 17],
+        [6., 22., 52., 19]]
+X = np.arange(0,8,2)
+
+plt.bar(X + 0.00, data[0], color = 'b', width = 0.50)
+plt.bar(X + 0.50, data[1], color = 'g', width = 0.50)
+plt.bar(X + 1.0, data[2], color = 'r', width = 0.50)
+plt.xticks(X+0.50, ("A","B","C", "D"))
+plt.show()
+
+data = np.array([[5., 25., 50., 20.],
+        [4., 23., 51., 17],
+        [6., 22., 52., 19]])
+color_list = ['b', 'g', 'r']
+data_label = ["A","B","C"]
+X = np.arange(data.shape[1])
+X
+
+data = np.array([[5., 5., 5., 5.],
+        [4., 23., 51., 17],
+        [6., 22., 52., 19]])
+for i in range(3):
+    plt.bar(X, data[i], bottom = np.sum(data[:i], axis=0), 
+            color = color_list[i], label=data_label[i])
+plt.legend()
+plt.show()
+
+A = [5., 30., 45., 22.]
+B = [5, 25, 50, 20]
+X = range(4)
+plt.bar(X, A, color = 'b')
+plt.bar(X, B, color = 'r', bottom = 60)
+plt.show()
+
+women_pop = np.array([5, 30, 45, 22])
+men_pop = np.array([5, 25, 50, 20])
+X = np.arange(4)
+plt.barh(X, women_pop, color = 'r')
+plt.barh(X, -men_pop, color = 'b')
+plt.show()
+
+X = np.arange(100)
+plt.hist(X,bins=5)
+plt.show()
+
+data = np.random.randn(100,5)
+plt.boxplot(data)
+plt.show()
