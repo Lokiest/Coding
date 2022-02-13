@@ -1,0 +1,99 @@
+# Q1
+import pandas as pd
+
+idx = ["HDD", "SDD", "USB", "CLOUD"]
+data = [19, 11, 5, 97]
+
+series = pd.Series(data = data, index = idx)
+
+series = series[series >= 10][series <= 20]
+print(series)
+
+
+# Q2
+import pandas as pd
+
+df1 = pd.DataFrame([["Cherry", "Fruit", 100],
+                   ["Mango", "Fruit", 110],
+                   ["Potato", "Vegetable", 60],
+                   ["Onion", "Vegetable", 80]],
+                   columns = ["Name", "Type", "Price"])
+
+df2 = pd.DataFrame([["Pepper", "Vegetable", 50],
+                   ["Carrot", "Vegetable", 70],
+                   ["Banana", "Fruit", 90],
+                   ["Kiwi", "Fruit", 120]],
+                   columns = ["Name", "Type", "Price"])
+
+df3 = pd.concat([df1, df2], axis = 0)
+
+df_fruit = df3.loc[df3["Type"] == "Fruit"]
+df_fruit = df_fruit.sort_values(["Price"], ascending = False)
+print(df_fruit)
+
+df_veg = df3.loc[df3["Type"] == "Vegetable"]
+df_veg = df_veg.sort_values(["Price"], ascending = False)
+print(df_veg)
+
+print("Sum of Top 2 Fruit Price : ", sum(df_fruit[:2]["Price"]))
+print("Sum of Top 2 Vegetable Price : ", sum(df_veg[:2]["Price"]))
+
+
+# Q3
+
+import pandas as pd
+
+idx = ["Sue", "Ryan", "Jay", "Jane", "Anna"]
+col = ["round_1", "round_2", "round_3", "round_4", "round_5"]
+data = [[55, 65, 60, 66, 57],
+        [64, 77, 71, 79, 67],
+        [88, 81, 79, 89, 77],
+        [45, 35, 30, 46, 47],
+        [91, 96, 90, 97, 99]]
+
+df = pd.DataFrame(data = data, index = idx, columns = col)
+df
+
+col_round_6 = pd.Series([11, 15, 13, 17, 19], index = idx)
+df["round_6"] = col_round_6
+df
+
+print(df.describe().loc[["mean", "max", "min"]])
+
+
+# Q4
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.arange(0., 5.0, 0.2)
+
+t1 = t
+t2 = t**2
+t3 = t**3
+
+plt.plot(t, t1, "r--")
+plt.plot(t, t2, "gs")
+plt.plot(t, t3, "b^")
+plt.show()
+
+
+# Q5
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+names = ["group_a", "group_b", "group_c"]
+values = [1, 10, 100]
+
+plt.figure(figsize = (9, 3))
+
+plt.subplot(131)
+plt.bar(names, values)
+plt.subplot(132)
+plt.scatter(names, values)
+plt.subplot(133)
+plt.plot(names, values)
+plt.show()
