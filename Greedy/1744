@@ -1,0 +1,36 @@
+#1744
+n = int(input())
+positive = []
+negative = []
+count = 0
+
+for _ in range(n):
+    i = int(input())
+
+    if i > 1:
+        positive.append(i)
+    elif i == 1:
+        count += 1
+    else:
+        negative.append(i)
+
+positive.sort(reverse = True)
+negative.sort()
+
+if len(positive) % 2 == 0:
+    for i in range(0, len(positive), 2):
+        count += positive[i] * positive[i + 1]
+else:
+    for i in range(0, len(positive) - 1, 2):
+        count += positive[i] * positive[i + 1]
+    count += positive[-1]
+
+if len(negative) % 2 == 0:
+    for i in range(0, len(negative), 2):
+        count += negative[i] * negative[i + 1]
+else:
+    for i in range(0, len(negative) - 1, 2):
+        count += negative[i] * negative[i + 1]
+    count += negative[-1]
+
+print(count)
