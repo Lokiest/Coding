@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PPakDoRyeon Coding</title>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <h1><a href="index.html">PPakDoRyeon Coding </a></h1>
+    <a href="3.html"
+    target = "_blank" title = "DFS로 이동">
+      <h2>DFS</h2></a>
+
+
+    <ol>
+      <li><a href="1.html">Coding</a></li>
+      <li><a href="2.html">BFS</a></li>
+      <li><a href="3.html">DFS</a></li>
+    </ol>
+    <ul>
+      <li>BOJ 4234</li>
+      <li>BOJ 123123</li>
+      <li>BOJ 2623443</li>
+    </ul>
+
+
+    import sys
+    <br>sys.setrecursionlimit(100000)
+
+    <br>m, n = map(int, input().split())
+    <br>G = [list(map(int, input().split())) for _ in range(m)]
+    <br>visited = [[-1] * n for _ in range(m)]
+    <br>dx = [-1, 1, 0, 0]
+    <br>dy = [0, 0, 1, -1]<br><br>
+
+    def dfs(x, y):
+        <br>if x == m - 1 and y == n - 1:
+            <br>return 1
+
+        <br>if visited[x][y] != -1:
+            r<br>eturn visited[x][y]
+      <br>visited[x][y] = 0
+
+        <br>for i in range(4):
+            <br>nx = x + dx[i]
+            <br>ny = y + dy[i]
+            <br>if 0 <= nx < m and 0 <= ny < n and G[nx][ny] < G[x][y]:
+                <br>visited[x][y] += dfs(nx, ny)
+        <br>return visited[x][y]<br><br>
+    print(dfs(0,0))

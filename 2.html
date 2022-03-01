@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PPakDoRyeon Coding</title>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <h1><a href="index.html">PPakDoRyeon Coding </a></h1>
+    <a href="2.html"
+    target = "_blank" title = "BFS로 이동">
+      <h2>BFS</h2></a>
+
+    <ol>
+      <li><a href="1.html">Coding</a></li>
+      <li><a href="2.html">BFS</a></li>
+      <li><a href="3.html">DFS</a></li>
+    </ol>
+    <ul>
+      <li>BOJ 1234</li>
+      <li>BOJ 4321</li>
+      <li>BOJ 3456</li>
+    </ul>
+
+
+    <p style ="margin-top:20px;">
+    #2178
+    <br>from collections import deque</p>
+    n, m = map(int, input().split())
+    <br>G = []
+    <br>for i in range(n):
+        <br>G.append(list(map(int, input())))
+
+    <br><br>dx = [-1, 1, 0, 0]
+    <br>dy = [0, 0, -1, 1]
+
+    <br><br>def bfs(x, y):
+        <br>que = deque()
+        <br>que.append((x, y))
