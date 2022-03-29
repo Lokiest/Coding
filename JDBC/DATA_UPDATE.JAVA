@@ -27,7 +27,7 @@ public class Program_2 {
 				+ "WHERE ID = ?";
 		
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection(url, "system", "1001");
+		Connection con = DriverManager.getConnection(url, "ID", "PASSWORD");
 		//Statement st = con.createStatement();
 		PreparedStatement st = con.prepareStatement(sql); //변수를 넣어주는 모듈
 		st.setString(1, title);
