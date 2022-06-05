@@ -13,11 +13,11 @@
     <property name="dataSource" ref="dataSource" /> //추가된 JdbcContext 타입 빈
   </bean>
   
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/springbook?characterEncoding=UTF-8" />
-		<property name="username" value="spring" />
-		<property name="password" value="book" />
-	</bean>
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+    <property name="driverClass" value="com.mysql.jdbc.Driver" />
+    <property name="url" value="jdbc:mysql://localhost/springbook?characterEncoding=UTF-8" />
+    <property name="username" value="spring" />
+    <property name="password" value="book" />
+  </bean>
   
 </beans>
