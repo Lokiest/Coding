@@ -1,0 +1,10 @@
+//메일 발송 오브젝트의 빈 등록
+<bean id="userService" class="springbook.user.service.UserService">
+	<property name="userDao" ref="userDao" />
+	<property name="transactionManager" ref="transactionManager" />
+	<property name="mailSender" ref="mailSender" />
+</bean>
+
+<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<property name="host" value="mail.server.com" />
+</bean>
