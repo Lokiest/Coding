@@ -1,0 +1,12 @@
+//데코레이터 패턴을 위한 DI 설정
+<!-- 데코레이터 -->
+<bean id="userService" class="springbook.user.service.UserServiceTx">
+	<property name="transactionManager" ref="transactionManager" />
+	<property name="userService" ref="userServiceImpl" />
+</bean>
+
+<!-- 타겟 -->
+<bean id="userServiceImpl" class="springbook.user.service.UserServiceImpl">
+	<property name="userDao" ref="userDao" />
+	<property name="mailSender" ref="mailSender" />
+</bean>
