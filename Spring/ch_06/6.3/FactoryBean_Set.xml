@@ -1,0 +1,5 @@
+//팩토리 빈 설정
+<bean id="message"
+    class="springbook.learningtest.spring.factorybean.MessageFactoryBean">
+    <property name="text" value="Factory Bean" />
+</bean>
