@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex15.html</title>
+</head>
+<body>
+    <!-- form태그의 속성
+	1) name, id : 폼을 식별할 수 있는 이름
+	2) action : 폼 양식을 처리해줄 서버 페이지를 기술한다.
+	3) method : 데이터 전송방식을 기술한다. 주로 get아니면 post를 기술한다. put, delete,..
+			get방식은 간단한 데이터 전송시 사용한다.=> 사용자가 입력한 값이 url부분에 노출됨
+			post방식은 대용량의 데이터 전송시 사용 => 데이터가 노출되지 않는다.
+    4) enctype : 인코딩 방식을 지정한다.
+				파일 업로드시는 multipart/form-data를 지정해야 한다.
+                application/x-www-form-urlencoded==>디폴트 (파일첨부시 파일명만 전송됨)
+
+        http://localhost:8080/join.jsp?name=test&userid=aaa&pwd=1111&photo=&gender=Male
+		&hobby=sports&hobby=movie
+
+        http://127.0.0.1:5500/join?userid=sdfsdfs&pwd=123 =>GET방식의 요청일 때
+        get방식 요청일 때는 입력 데이터를 query string으로 url부분에 포함시켜서 서버에 전송한다.
+        ?userid=sdfsdfs&pwd=123 => Query String
+
+        http://127.0.0.1:5500/join ===> POST 방식 요청일 때
+	-->
+    <h1>Form 양식</h1>
+    <p>
+        form 태그는 사용자가 입력한 값들을 웹서버에 전달하고<br>
+        form 태그 안에는 다양한 입력 양식들이 올 수 있는데 이는 form control이라 함
+    </p>
+    <hr>
+    <!-- method : get(default), post, delete, options ... -->
+    <form name="frm" id="frm" action="join.jsp" method="get" enctype="multipart/form-data"> <!--파일 업로드시-->
+        아이디 : <input type="text" name="userid"><br>
+        비밀번호 : <input type="password" name="userpwd"><br>
+        회원사진 : <input type="file" name="photo"><br>
+        성별 : <input type="radio" name="gender" value="Man" checked>남자
+            <input type="radio" name="gender" value="Woman">여자<br>
+            <!-- radio : 단일선택, 동일한 name일 경우 그 중 1개만 선택 
+                checkbox : 다중선택 -->
+        취미 : <input type="checkbox" name="hobby" value="sports">운동
+            <input type="checkbox" name="hobby" value="game">게임
+            <input type="checkbox" name="hobby" value="movie">영화
+            <input type="checkbox" name="hobby" value="music">노래<br>
+        직업 :
+        <!-- select : 기본은 단일선택, mutiple 속성 주면 다중선택 가능, size 속성 주면 펼친 형태로  -->
+        <select name="job">
+            <option value="">직업 선택</option>
+            <option value="Developer" selected>개발자</option>
+            <option value="banker">은행원</option>
+            <option value="Soldier">군인</option>
+        </select><br>
+        <select name="lang" multiple size="5">
+            <option value="">사용 가능 언어</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="C">C++</option>
+        </select><br>
+        자기소개 :
+        <textarea name="intro" cols="30" rows="10" placeholder="100자 이내 서술"></textarea><br>
+        히든필드 :
+        <input type="hidden" name="secret" value="Classified"><br>
+        <input type="submit" value="회원가입">
+        <input type="button" value="일반버튼" onclick="alert('Hi')"> <!--전송기능x-->
+        <input type="reset" value="다시쓰기"> <!--입력값 초기화-->
+        <input type="image" src="login.png" width="200" height="40"> <!--image버튼 : 기본적으로 submit 기능 갖고있음-->
+        <img src="login.png" onclick="alert('잘가라')" width="200" height="40">
+    </form>
+</body>
+</html>
