@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex16.html</title>
+    <style type="text/css">
+        input {
+            width: 10%; 
+            padding: 5px;
+        }
+        label {
+            width: 6%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML에 추가된 입력양식</h1>
+    <fieldset>
+        <legend>::회원가입::</legend>
+        <form action="signup.jsp" method="get">
+            <!-- for 속성에는 input id값을 지정 -->
+            <label for="myemail">이메일 : </label>
+            <!-- type을 email로 지정하면 자바스크립트를 사용 안하고도 이메일 형식에
+			맞는지 간단히 처리 가능함. submit버튼이 눌러지면 이메일 형식에 맞지 않을 경우
+			풍선말로 에러 메시지를 출력한다.
+			multiple속성을 추가하면 콤마(,)로 연결하여 이메일을 여러 개 입력 가능하다.
+			required속성을 추가하면 필수로 입력해야 함을 의미한다.
+		    -->
+            <input type="email" name="email" id="myemail" required multiple size="50"> &nbsp;&nbsp;&nbsp;
+            <label for="homepage">홈페이지 : </label>
+            <input type="url" name="homepage" id="homepage" placeholder="URL형식으로 기술"> &nbsp;&nbsp;&nbsp;
+            <label for="phone">연락처 : </label>
+            <input type="tel" name="phone" id="phone" placeholder="010-0000-0000"> <br><br>
+            <!-- tel로 지정하면 전화번호 형식에 맞지않으면 오류 발생하지는 않음 -->
+            <!-- 다만 숫자패드가 나타나 입력을 받음 -->
+            <label for="birth">생년월일 : </label>
+            <input type="date" name="birth" id="birth" min="2000-01-01" max="2022-09-20"> &nbsp;&nbsp;&nbsp;
+            <label for="time">시간 : </label>
+            <input type="time" name="time" id="time">&nbsp;&nbsp;&nbsp;
+            <label for="age">나이 : </label>
+            <input type="number" name="age" id="age" min="1" max="100"> &nbsp;&nbsp;&nbsp;
+            <label for="cr">좋아하는 색상 : </label>
+            <input type="color" name="cr" id="cr" value="#ff0000"> &nbsp;&nbsp;&nbsp;
+            <label for="RGB">RGB범위 : </label>
+            <input type="range" name="RGB" id="RGB" min="0" max="255" value="50"> &nbsp;&nbsp;&nbsp;
+    
+            <button type="submit">회원가입</button>
+        </form>
+    </fieldset>
+</body>
+</html>
