@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex25.html</title>
+    <style>
+        body * {
+            border: 1px solid sienna;
+            padding: 10px;
+            margin: 5px;
+        }
+        /* 요소 : first-child, last-child,  */
+        /* p요소 중 첫번째 자식 선택 *//* 그 중 div의 자식만 */
+        div>p:first-child {
+            border: thick dashed goldenrod;
+        }
+        /*[1] ol>li중에서 첫째자식 선택해서 글자색:blue */
+        ol>li:first-child {
+            color: blue;
+        }
+        /* [2] ol>li중 마지막자식 선택해서 배경색:알아서 */
+        ol>li:last-child {
+            background-color: blueviolet;
+        }
+        /* [3] ol>li중 둘째 자식 선택해서 글자색:maroon 글자크기 :2배 */
+        ol>li:first-child+li {
+            color: maroon;
+            font-size: 2em;
+        }
+        /* [4] ol>li중 세번째 자식 선택해서 글자색:mediumaquamarine 글자크기 :1.5배 */
+        ol>li:nth-child(3) {
+            color: mediumaquamarine;
+            font-size: 1.5em;
+        }
+        /* [4] ol>li중 짝수번째 자식 선택해서 테두리 thick double 색상 */
+        ol>li:nth-child(2n) {
+            border: thick double;
+        }
+        ol>li:nth-child(2n + 1) {
+            background-color: mistyrose;
+        }
+        /* 뒤에서 2번째 */
+        ol>li:nth-last-child(2) {
+            font-size: 1.5em;
+            color: navy;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>가상클래스 선택자 (Pseudo Selector) => 선택요소 : 특성(가상)</h1> -->
+    <p>body first child</p>
+    <h1>Welcome to my homepage</h1>
+    <p>body not first child</p>
+    <div>
+        <p>div>p first child</p>
+        <p>div>p not first child</p>
+    </div>
+    <hr color="black">
+    <ol>
+        <li>Espresso</li>
+        <li>Americano</li>
+        <li>CaffeLatte</li>
+        <li>Cappuccino</li>
+        <li>CafeMocha</li>
+        <li>Caramel Latte</li>
+    </ol>
+</body>
+</html>
