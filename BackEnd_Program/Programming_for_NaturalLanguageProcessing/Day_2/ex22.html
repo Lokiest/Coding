@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex22.html</title>
+    <style>
+        /* 태그선택자 */
+        div {
+            color: darkslategray;
+            font-family: fantasy;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        /* 클래스 선택자 : 앞에 마침표 붙이고 클래스명을 기술*/
+        .c1 {
+            color: dimgray;
+            background-color: darkturquoise;
+            padding: 1em;
+            margin: 0.8em;
+        }
+        .c2 {
+            color: dodgerblue;
+        }
+        /* id선택자 */
+        #dv1 {
+            color: firebrick;
+            border: 5px tomato;
+        }
+        #dv2 {
+            background-color: wheat;
+        }
+        /* 우선순위 : 아이디 선택자 > 클래스 선택자 > 계층 선택자 > 태그 선택자 */
+    </style>
+</head>
+<body>
+    <!-- id : 한 페이지 내에서 유니크한 값을 가져야 함
+        class : 한 페이지 내에서 동일한 값을 여러개 갖는 것이 가능
+    -->
+    <h1>ID선택자, class선택자, tag선택자</h1>
+    <div id="dv1">div#div1</div>
+    <div class="c1">div.c1</div>
+    <p id="p1">p#p1</p>
+    <p class="c1">p.c1</p>
+    <div id="dv2" class="c2">div#dv2 .c2</div>
+</body>
+</html>
