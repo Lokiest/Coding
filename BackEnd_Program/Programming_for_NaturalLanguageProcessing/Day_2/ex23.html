@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex23.html</title>
+    <style>
+        body *{
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        /* [1] 선택자 > 자식 선택자 : 특정요소 바로 밑에 있는 자식 요소를 선택 
+            [2] 선택자  자손선택자 : 특정 요소 안에 포함된 모든 자손 요소를 선택
+	        [3] 선택자 + 형제선택자: 특정 요소의 바로 뒤에오는 형제1개 요소를 선택
+	        [4] 선택자 ~ 형제선택자: 특정 요소의 다음에 오는 모든 형제요소를 선택*/
+        /* div 중 id가 wrap의 자식 p 선택해서 배경색 */
+        div#wrap>p {
+            background-color: thistle;
+        }
+        /* #wrap 손자 중 p 요소들 선택해서 글자색 바꾸기 */
+        #wrap p{
+            font-size: 1.5em;
+            color: tomato;
+        }
+        /* #wrap의 자식 p요소 중 클래스가 first인 요소의 아래 동생 p를 선택해서 */
+        #wrap>p.fist+p {
+            border: 5px dotted red;
+        }
+        /* #wrap의 자식 p요소 중 클래스가 first인 요소의 아래 동생들 중 div 선택해서 배경색 지정 */
+        #wrap>p.first~div {
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <h1>계층 선택자 (>, +, ~)</h1>
+    <div id="wrap">부모
+        <p class="first">자식1p.first</p>
+        <p>자식2p</p>
+        <div>자식3div
+            <div>손자1div</div>
+            <span>손자2span</span>
+        </div>
+        <div>자식4div
+            <p>손자p</p>
+        </div>
+    </div>
+</body>
+</html>
