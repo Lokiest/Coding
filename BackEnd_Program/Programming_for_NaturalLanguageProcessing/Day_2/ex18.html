@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex18.html</title>
+    <style type="text/css">
+        /* 선택자{속성명 : 값, 속성명2, 값2 ...} */
+        * {
+            color: coral;
+        }
+        body {
+            padding: 30px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+        }
+        /* b태그 선택해서 변경하기 */
+        /* 1em = 16px정도, 상대적 크기 */
+        b {
+            color: tomato;
+            font-size: 33px;
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. style 태그로 html파일 내부 정의하는 방법 -->
+    <!-- 2. 외부파일에 정의한 뒤 참조하는 방법 : link태그-->
+    <!-- 3. 외부파일에 정의한 뒤 참조하는 방법 : @import -->
+    <!-- 4. 태그 안에 인라인 스타일로 정의하는 방법  -->
+    <div>
+        Hi, Hello <br>
+        <b>CSS</b>배우기
+        <p>
+            HTML의 보완적 요소 = css
+            <b>Welcome CSS</b>
+        </p>
+    </div>
+</body>
+</html>
