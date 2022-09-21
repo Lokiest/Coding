@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            color: black;
+            /* color: rgba(70%, 80%, 90%, 1); */
+        }
+        span {
+            padding: 1em;
+            color: rebeccapurple;
+        }
+        span.sky{
+            background-color: skyblue;
+        }
+        .pink{
+            background-color: palevioletred;
+        }
+        /* table 아래 tr 아래 td 중 첫번째 열에만 배경 */
+        tr>td:first-child {
+            background-color: royalblue;
+        }
+        tr>td {
+            background-image: url(./images/아이콘.png);
+            background-repeat: no-repeat;
+        }
+        tr>td.rp {
+            background-repeat: repeat;
+        }
+        #x {
+            background-repeat: repeat-x;
+        }
+        #y {
+            background-repeat: repeat-y;
+        }
+        #x2 {
+            background-position: bottom right;
+        }
+        #y2 {
+            background-position: 50% 50%;
+        }
+        #z2 {
+            background-position: 50px 50px;
+        }
+        /* textarea에 대해 아래 스타일을 적용하세요
+            글자크기: 1.2em;
+            배경이미지: 알아서
+            배경이미지: 반복하지 않도록
+            이미지를 중앙에 위치시키세요
+            테두리: 2px solid 색상알아서
+            textarea에 포커스가 오면 글자생상
+        */
+        textarea.txt:focus {
+            font-size: 1.2em;
+            background-image: url(./images/아이콘2.png);
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            border: 2px solid olivedrab;
+            color: royalblue;
+            background-attachment: scroll;
+            /* scroll : default, 스크롤하면 배경이미지는 스크롤 되지 않음 */
+            /* fixed : 움직이지 않음 */
+        }
+        #wrap {
+            background-image: url(./images/IMG_7919.JPG);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 400px;
+            height: 400px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>배경 관련 스타일</h1>
+  <span class="sky">배경색 적용하기1</span>
+  <span class="pink">배경색 적용하기2</span>
+
+  <h2 class="sky">배경에 이미지 적용하기</h2>
+
+  <table border="1" height="400px" width="100%">
+  <tr>
+	<td width="25%" class='rp'>repeat</td>
+	<td width="25%" id="x">repeat-x</td>
+	<td width="25%" id="y">repeat-y</td>
+	<td width="25%" id="z">no-repeat</td>
+  </tr>
+  <tr>
+	<td width="25%" class="a">기본 위치는 left, top</td>
+	<td width="25%" id="x2">right-bottom</td>
+	<td width="25%" id="y2">50% 50%</td>
+	<td width="25%" id="z2">50px 50px</td>
+  </tr>
+  </table>
+<hr color="red">
+	<textarea class="txt" rows="10" cols="50">안녕하세요?</textarea>
+    <div id="wrap" style="border: 1px solid slategrey;">
+
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
