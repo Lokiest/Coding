@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex29.html</title>
+    <style>
+    /* 가상클래스: 문서의 여러 요소 중 원하는 요소를 선택
+        가상요소  : 문서 안의 특정 부분에 스타일을 지정하기 위해 가상으로 요소를 만들어 추가한다.
+        가상요소는 가상 클래스와 구별하도록 가상요소 이름 앞에 콜론(::) 2개를 붙여 표시한다.
+        
+        - 요소::first-letter : 요소 중 첫 글자를 선택
+        - 요소::first-line : 첫번째 줄을 선택
+        - 요소::after : 요소 이후에 스타일 적용
+        - 요소::before : 요소 이전에 스타일 적용
+        - 요소::selection : 선택한 요소 */
+        h1::before {
+            content: 'CSS / ';
+            color: indianred;
+        }
+        p::first-letter {
+            font-size: 3em;
+        }
+        p::first-line {
+            color: khaki;
+            font-weight: bold;
+        }
+        h1::after {
+            content: ' HTML!!';
+            color: lightcoral;
+        }
+        ::selection {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>가상 요소 선택자</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Explicabo illum sunt distinctio sed, tempore, repellat <br>
+        rerum et ea laborum voluptatum! Quisquam error fugiat 
+        debitis maiores officiis, tenetur ullam amet in!</p>
+</body>
+</html>
