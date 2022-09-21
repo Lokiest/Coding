@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul>li {
+            border: 3px dotted yellowgreen;
+            list-style-position: inside;
+        }
+        /* 클래스 메뉴인 아래 li 
+        - 폭:120px  높이:25px
+	   - 배경색: lightblue;
+	   - 마진: 3px
+	   - 패딩: 10px
+	   - 글자색: 알아서
+	   - 서체: Helvetica, sans-serif
+	   - 글자크기 : 13px;
+	   - 글자정렬: 중앙에 오도록 */
+       ul.menu>li {
+           width: 120px;
+           height: 25px;
+           margin: 3px;
+           padding: 10px;
+           background-color: tomato;
+           font-family: Arial, Helvetica, sans-serif;
+           font-size: 13px;
+           text-align: center;
+           list-style-type: none;
+           float: left;
+       }
+       a:link {
+           text-decoration: none;
+       }
+    </style>
+</head>
+<body>
+    <h1>목록 스타일</h1>
+    <ul style="list-style-type: none; list-style-image: url(./images/아이콘2.png);">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Java</li>
+    </ul>
+    <hr>
+    <ol style="list-style-type: upper-roman; border: 1px solid green;">
+        <li>Oracle</li>
+        <li>MySQL</li>
+        <li>SQL Server</li>
+    </ol>
+    <hr>
+    <ul class="menu">
+        <li><a href="ex01.html">html</a></li>
+        <li><a href="ex01.html">CSS</a></li>
+        <li><a href="ex01.html">js</a></li>
+        <li><a href="ex01.html">java</a></li>
+    </ul>
+    <hr style="color: red; clear: left;">
+</body>
+</html>
