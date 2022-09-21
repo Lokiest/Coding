@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex28.html</title>
+    <style>
+        label {
+            width: 20%;
+            display: inline-block;
+        }
+        /* 값 유효할 때 : valid, 아닐 때 invalid */
+        /* valid : input중 text 요소 배경색 */
+        /* invalid : text 요소 배경 */
+        input[type=text]:valid {
+            background-color: bisque;
+        }
+        input[type=text]:invalid {
+            background-color: tomato;
+        }
+        input:not([type=text]) {
+            border: 2px dotted green;
+        }
+    </style>
+</head>
+<body>
+    <h1>가상 클래스 선택자</h1>
+    <form action="join.jsp" method="post">
+        <label for="">반드시 값을 입력</label>
+        <input type="text" required><br>
+
+        <label for="">특문 포함하지 않는 2~4자리 문자 or 숫자</label>
+        <input type="text" required pattern="[A-Za-z0-9]{2,4}"><br>
+
+        <label for="">숫자만 2~4자리 입력</label>
+        <input type="password" pattern="[0-9]{2,4}"><br>
+
+        <button>가입</button>
+    </form>
+</body>
+</html>
