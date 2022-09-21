@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex27.html</title>
+    <style>
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+        /* text만 골라서 */
+        input[type=text] {
+            color: blue;
+        }
+        input[type=password] {
+            background-color: burlywood;
+        }
+        /* 선택자 : focus, 선탁자에 focus 왔을 때 */
+        input[type=text]:focus {
+            color: red;
+        }
+        input:disabled+span{
+            color :red
+        }
+        input:enabled+span{
+            color: blue;
+        }
+        input:checked+span{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1>가상 클래스 선택자</h1>
+    <input type="text" value="포커스가 오면 red로"><br>
+    <input type="password" value="포커스가 오면 blue로"><br>
+    <hr>
+    <label for="gender1"><input type="radio" name="gender" id="gender1" value="Man">Man</label>
+    <label for="gender2"><input type="radio" name="gender" id="gender2" value="Woman">Woman</label>
+    <hr>
+    <label for="ck1"><input type="checkbox" id="ck1" value="bicycle"><span>bicycle</span></label>
+    <label for="ck2"><input type="checkbox" id="ck2" value="subway"><span>subway</span></label>
+    <label for="ck3"><input type="checkbox" id="ck3" disabled value="car"><span>car</span></label>
+</body>
+</html>
