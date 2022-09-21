@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding : 2em;
+        }
+        div:not(#wrap) {
+            width: 100px;
+            height: 100px;
+            /* background-color: burlywood; */
+        }
+        #wrap {
+            position: relative;
+            /* default : static */
+            border: 1px solid blue;
+            width: 100%;
+            height: 500px;
+        }
+        .z-1 {
+            position :absolute;
+            /* 부모요소를 기준으로 좌표를 잡음 */
+            background-color: burlywood;
+            left: 50px;
+            top: 50px;
+            z-index: 9;
+        }
+        .z-2 {
+            position :absolute;
+            background-color: tomato;
+            left: 80px;
+            top: 80px;
+            z-index: 8;
+        }
+        .z-3 {
+            position :absolute;
+            background-color: blueviolet;
+            left: 110px;
+            top: 110px;
+            z-index: 7;
+        }
+        .z-4 {
+            position :absolute;
+            background-color: coral;
+            left: 140px;
+            top: 140px;
+            z-index: 6;
+        }
+    </style>
+</head>
+<body>
+    <h1>레이어를 구성하기</h1>
+    <div id="wrap">
+        <div id="" class="z-1">
+            레이어: z-1
+         </div>
+         <div id="" class="z-2">
+            레이어: z-2
+         </div>
+         <div id="" class="z-3">
+            레이어: z-3
+         </div>
+         <div id="" class="z-4">
+            레이어: z-4
+         </div>
+    </div>
+</body>
+</html>
