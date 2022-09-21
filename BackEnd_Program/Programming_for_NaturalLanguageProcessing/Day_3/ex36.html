@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            color : red !important;
+        }
+        #p1 {
+            color: blue;
+        }
+        div.food {
+            color: chocolate;
+        }
+        .food {
+            color: brown !important;
+        }
+        /* 클래스 : 구체적인게 가장 우선순위 */
+        /* 적용하고싶은 색상에 !important 붙이면 적용 */
+    </style>
+</head>
+<body>
+    <p id="p1">
+        Will be Red
+    </p>
+    <div class="food">
+        Will be Chocolate
+    </div>
+</body>
+</html>
