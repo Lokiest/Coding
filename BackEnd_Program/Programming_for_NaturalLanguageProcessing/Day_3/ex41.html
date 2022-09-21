@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #abs {
+            background-color: royalblue;
+            width: 300px;
+            height: 300px;
+            color: wheat;
+            position: absolute;
+            top: 150px;
+            left: 50px;
+        }
+        #parent {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: chartreuse;
+        }
+        #child {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: fuchsia;
+            left: 50px;
+            top: 50px;
+        }
+        /*absolute 예시를 보면, #absolute는 조상 태그 중 postion: relative인 것이 없기 때문에
+        body를 기준으로 가장 오른쪽으로 달라붙었습니다. 
+        반면 #child는 조상 태그인 #parent가 position: relative이기 때문에 그것을 기준으로 
+	    위치를 잡는다.*/
+    </style>
+</head>
+<body>
+    <h1>position-static, relative, [absolute], fixed</h1>
+    <div id="abs">
+        absolute
+    </div>
+    <div id="parent">
+        <div id="child">
+            child
+        </div>
+    </div>
+
+</body>
+</html>
