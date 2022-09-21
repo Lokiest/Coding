@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.bx {
+            border: 2px solid blueviolet;
+            /* padding-top: 10px;
+            padding-right: 20px;
+            padding-bottom: 30px;
+            padding-left: 40px; */
+            padding : 10px 30px 30px 30px;
+            width: 200px;
+            height: 200px;
+            /* margin-top: 10px;
+            margin-bottom: 20px; */
+            margin: 20px 20px;
+            vertical-align: middle;
+            text-align: center;
+            /* 테이블의 td에서는 수직정렬이 잘 적용되는데, div에서는 적용 x > 테이블처럼 바꿔줘야*/
+        }
+        #mydiv {
+            background-color: burlywood;
+            border: thick dotted blueviolet;
+            margin-top: 1em;
+            display: table;
+        }
+        #mycell {
+            text-align: center;
+            height: 200px;
+            width: 200px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        #mydiv2 {
+            background-color: cadetblue;
+            /* display: none; */
+            /* visibility: hidden; */
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bx">
+        content
+    </div>
+    <div class="bx">
+        content2
+    </div>
+    <div id="mydiv">
+        <div id="mycell">ㅂㅈㄷㅁㄴㅇㄷㅈㄱ</div>
+    </div>
+    <button onclick="show()">없애기</button>
+    <div id="mydiv2" class="bx">
+        ewrewrerwewr
+    </div>
+    <script>
+        function show() {
+            //alert('Hi')
+            var obj=document.getElementById('mydiv2');
+            // obj.style.display = 'block';
+            // obj.style.visibility = 'visible';
+            obj.style.opacity = '1';
+        }
+    </script>
+</body>
+</html>
