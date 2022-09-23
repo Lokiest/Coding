@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>자바스크립트 자료유형</h1>
+    <h2>기본 자료형 : number, string, boolean, undefined</h2>
+    <h2>참조형 : object, function</h2>
+    <script>
+        var a;
+        a=10;
+        var b = "Hi";
+        document.write('a = ', a, '<br>');
+        document.write("a의 자료형 : ", typeof a,'<br>');
+        document.write("b = ", b, '<br>');
+        document.write("b의 자료형 : ", typeof b,'<br>');
+        
+        let intNum = 100;
+        let doubleNum = 3.14;
+        var bool = true;
+
+        document.write(intNum, ' ', typeof(intNum),'<br>');
+        document.write(doubleNum, ' ',typeof(doubleNum),'<br>');
+        document.write(bool, ' ',typeof(bool),'<br>');
+
+        var obj = null;
+        document.write(obj, ' ', typeof(obj),'<br>');
+
+        var obj2;
+        document.write(obj2, ' ', typeof(obj2),'<br>');
+
+        var car = new Object();
+        car.color = 'black';
+        car.capacity = 2000;
+        car.run = function() {
+            document.write('<h2>' + this.color + ' 색상의 자동차</h2>');
+        }
+
+        document.write(car.color + " " + car.capacity + " ", typeof car)
+        car.run();
+
+        var car2 = {
+            color:'red',
+            capacity:3000,
+            run:function() {
+                document.write('<h2>' + this.color + ' 색상의 자동차</h2>');
+            }
+        };
+        document.write(car2.color + " " + car2.capacity + " ", typeof car)
+        car2.run();
+    </script>
+</body>
+</html>
