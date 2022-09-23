@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>논리연산자, 비트연산자, 시프트연산자</h1>
+    <script>
+        let a = true;
+        let b = false;
+
+        let print = function(str) {
+            document.write('<h2>' + str + '</h2>');
+        }
+
+        print(a);
+        print(b);
+        print(a&b);
+        print(a|b);
+        print(a^b);
+        print('<hr>');
+        print(a&&b);
+        print(a||b);
+        print('<hr>');
+        print('<hr>');
+        print('<hr>');
+
+        print(3|5);
+        print(3&5);
+        print(3^5);
+        print('<hr>');
+        print('<hr>');
+        print('<hr>');
+
+        // 5: 00000101
+        // 5 << 2 : 00010100
+        // 5 >> 2 : 00000001
+        print(5<<2);
+        print(5>>2);
+        print(5>>>2);
+        print('<hr>');
+        print(-5>>2);
+        print(-5>>>2);
+    </script>
+</body>
+</html>
