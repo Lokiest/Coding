@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>연산자</h1>
+    <script>
+        // 산술연산자
+        var a = 20;
+        var b = 10;
+        function print(str) {
+            document.write(str, '<br>');
+        }
+
+        print(a+b);
+        print(a*b);
+        print(a/b);
+        print(a-b);
+        print(a%b);
+        print('<hr>');
+
+        //관계연산자
+        print(a==b);
+        print(a!=b);
+        var c = 20.0;
+        var d = '10';
+        print(a==c);
+        print(b==d);
+        print(a===c);
+        print(d===b);
+        print('<hr>');
+
+        let x = 77;
+        let y = 33;
+        let z = 77.0;
+        print(x>y);
+        print(x>z);
+        print(x>=z);
+
+        //증감연산자
+        var m = 5;
+        var n = 9;
+        print('<hr>');
+        m++;
+        n++;
+        print(m)
+        print(n)
+        ++m;
+        --n;
+        print(m)
+        print(n)
+        print('<hr>');
+
+        var i = 10;
+        var j = 7;
+        var k = i++;
+        print(k);
+        print(i)
+
+        var q = ++j;
+        print(q);
+        print(j);
+        print('<hr>');
+    </script>
+</body>
+</html>
