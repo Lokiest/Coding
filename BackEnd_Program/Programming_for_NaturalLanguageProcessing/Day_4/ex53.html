@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>연산자</h1>
+    <script>
+        let print = function(str) {
+            document.write('<h2>' + str + '</h2>');
+        }
+        //대입연산자, 연산 후 대입연산자
+        // = += -= *= 등
+        var a = 8;
+        a += 3;
+        print(a);
+
+        a -= 5;
+        print(a);
+
+        a *= 4;
+        print(a);
+
+        a /= 3;
+        print(a);
+
+        a %= 3;
+        print(a);
+
+        //삼항 연산자
+        // 변수선언문 = (조건식)? 값1 : 값2;
+        let x = 30, y = 40;
+        let z=(x>y)?true:false;
+        print(z)
+    </script>
+</body>
+</html>
