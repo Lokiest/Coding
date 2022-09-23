@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let print = function(str) {
+            document.write('<h2>' + str + '</h2>');
+        }
+        let num1 = window.prompt('정수1 입력');
+        let num2 = window.prompt('정수2 입력');
+        //정수 변환 함수 : parseInt(), 실수 변환 함수 : parseFloat()
+        //숫자 변환 함수 : Number()
+        print('num1 = ', num1, '<br>');
+        print('num2 = ', num2, '<br>');
+
+        print('<h2>' + num1 + "+" +  num2 + " = " + (parseFloat(num1)+parseFloat(num2)) + '</h2>')
+    </script>
+</body>
+</html>
