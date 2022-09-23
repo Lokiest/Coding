@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>전역변수, 지역변수, 매개변수</h1>
+    <script>
+        var global = '전역변수';
+
+        function hello() {
+            aaa = 100; //var 생략가능 >> 전역변수 (var 생략시)
+            var local = '지역변수';
+            alert('global : ' + global);
+            alert('local : ' + local);
+        }
+        function hi() {
+            alert('global >> ' + global);
+            // alert('local >> ' + local); 호출 불가능
+        }
+        function bye(name) {
+            alert('bye >> ' + name);
+        }
+        
+        // hello();
+        hi();
+        bye('juho');
+    </script>
+    
+</body>
+</html>
