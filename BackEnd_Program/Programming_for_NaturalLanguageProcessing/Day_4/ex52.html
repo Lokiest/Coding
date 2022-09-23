@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>적정 체중을 구하는 프로그램 작성</h1>
+    <div>
+        [실습] 이름, 키, 몸무게를 prompt로 받아서 체중 구한 뒤, 테이블 형태로 출력하기 <br>
+        적정 체중 = (키 - 100)의 90%
+    </div>
+    <script>
+        let print = function(str) {
+            document.write('<h2>' + str + '</h2>');
+        }
+        var name = window.prompt('이름 입력', '홍길동');
+        var height = window.prompt('키 입력', 180);
+        var weight = window.prompt('몸무게 입력', 60);
+        var fit = (parseInt(height) - 100) * 0.9;
+        var result = '';
+        var cr = 'black';
+
+        print('적정체중 : ' + fit + 'kg');
+
+        if (weight > fit * 1.1) {
+            result = "과체중";
+            cr = 'red';
+        }
+        else if (weight <= fit * 0.9) {
+            result = '체중 미달';
+            cr = 'blue';
+        }
+        else {
+            result = '적정체중';
+            cr = 'green';
+        }
+
+        let str = "<table border = '1'>";
+            str += "<tr><th>이름</th><td>" + name + "</td></tr>";
+            str += "<tr><th>키</th><td>" + height + "cm</td></tr>";
+            str += "<tr><th>몸무게</th><td>" + weight + "kg</td></tr>";
+            str += "<tr><th>적정체중</th><td>" + fit + "kg</td></tr>";
+            str += "<tr><th>결과</th><td style = 'color:"+cr+"'>" + result + "</td></tr>";
+            str += "</table>";
+        document.write(str);
+    </script>
+</body>
+</html>
