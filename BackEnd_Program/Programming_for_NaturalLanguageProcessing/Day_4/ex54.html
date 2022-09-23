@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>실습</h1>
+    <p>
+        prompt 이용해서 국어 영어 수학 성적 입력 받아서 성적표를 테이블 형태로 출력 <br>
+        국어 : 100점<br>
+        수학 : 100점<br>
+        영어 : 100점<br>
+        총 합계 점수 : 300점<br>
+        평균 점수 : 100점<br>
+        학 점 : A<br>
+    </p>
+    <script>
+        let print = function(str) {
+            document.write('<h2>' + str + '</h2>');
+        }
+        var korean = window.prompt('국어 입력', 100);
+        var math = window.prompt('수학 입력', 100);
+        var english = window.prompt('영어 입력', 100);
+        var sum = (parseInt(korean) + parseInt(math) + parseInt(english));
+        var average = Math.round((sum / 3));
+
+        // print('평균 : ' + average);
+
+        if (average >= 90) {
+            cr = 'A';
+        }
+        else if (average >= 80) {
+            cr = 'B';
+        }
+        else if (average >= 70) {
+            cr = 'C'
+        }
+        else if (average >= 60) {
+            cr = 'D'
+        }
+        else {
+            cr = 'F';
+        }
+
+        let str = "<table border = '1'>";
+            str += "<tr><th>국어 </th><td>" + korean + "점</td></tr>";
+            str += "<tr><th>수학 </th><td>" + math + "점</td></tr>";
+            str += "<tr><th>영어 </th><td>" + english + "점</td></tr>";
+            str += "<tr><th>합계 </th><td>" + sum + "점</td></tr>";
+            str += "<tr><th>평균 </th><td>" + average + "점</td></tr>";
+            str += "<tr><th>학점 </th><td>" + cr + "학점</td></tr>";
+            str += "</table>";
+        document.write(str);
+    </script>
+</body>
+</html>
