@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>배열</h1>
+    <p>
+        하나의 변수에 여러 개의 값을 저장할 수 있는 자료구조
+    </p>
+    <script>
+        //객체 : {}
+        //배열 : []
+        let arr = [10, 20, 'Java', 3.14, true];
+        // alert(typeof arr);
+        document.write(`<h3>${arr[0]}<h3>`);
+        document.write(`<h3>${arr[2]}<h3>`);
+        document.write(`<h3>length : ${arr.length}<h3>`);
+        for (let i=0;i<arr.length;i++) {
+            document.write(`<h3>${arr[i]}<h3>`);
+        }
+    </script>
+    <hr>
+    <script>
+        let arr2 = Array(); //빈 배열 생성
+        arr2[0] = 'Hi';
+        arr2[1] = 'Java';
+        arr2[2] = {"name" : "홍길동"};
+        document.write(`${arr2}<br>`);
+        document.write(`${arr2[2].name}<br>`);
+
+        let arr3 = Array(3); //크기 3인 배열 생성
+        arr3[0] = 100;
+        arr3[1] = 10;
+        arr3.push(200);
+        //for 사용해서 arr3 출력
+        for (let i=0;i<arr3.length;i++) {
+            document.write(`<h3>${arr3[i]}<h3>`);
+        }
+
+        let arr4 = Array(1,2,3,4,5);
+        let total = 0;
+        for(let i=0; i<arr4.length; i++){
+            total += arr4[i];
+        }
+        document.write(`${total} <br>`);
+
+        //for in 루프문 이용
+        let user = {
+            "name" : "ewr",
+            "age" : 23
+        }
+        for(let k in user) {
+            document.write(`<h3>${k}: ${user[k]}<h3>`);
+        }
+        //객체명.속성명 or 객체명[속성명] 식으로 접근 가능
+        for(let k in arr4) { //k : 배열 값이 아닌 인덱스 값
+            document.write(`<h3>${arr4[k]}<h3>`);
+        }
+    </script>
+</body>
+</html>
