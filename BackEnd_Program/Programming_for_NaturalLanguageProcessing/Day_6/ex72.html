@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BOM - document객체</h1>
+    <script>
+        /*document객체의 속성과 함수
+          [1] title 속성: 현재 문서의 제목을 출력하거나 설정
+          [2] lastModified속성: 현재 html문서가 마지막에 저장된 시간
+          [3] write() 함수
+          [4] getElementById('아이디명'), querySelector(selector), 
+                getElementsByTagName('태그명'), getElementsByClassName('클래스명')
+          [5] fgColor속성: 글자색
+          [6] bgColor속성: 배경색
+        */
+        document.title = '제목 변경';
+        document.bgColor = 'wheat';
+        document.fgColor = 'skyblue';
+        document.write(`<h2>${document.lastModified}</h2>`);
+
+        //window가 다 로드되고 나면 익명함수를 실행
+        window.onload=function() {
+            let obj = document.getElementById('btn');
+            obj.style.backgroundColor='yellowgreen';
+            obj.style.color='white';
+        
+        //1. 아이디로 찾고자 할 때 > getElementId("~"), querySelector("#~")
+        //2. 클래스로 찾고자 할 때 >getElementsClassName("~") : 반환타입 : Collection, querySelectorAll(".~")
+        //3. 태그명으로 찾고자 할 때 > getElementsTagName("~"), querySelectorAll("~")
+
+        //id가 html인 요소
+        let liobj = document.querySelector('#html');
+        liobj.style.color='red';
+        liobj.style.fontSize = '2em';
+
+        let liobjarr = document.getElementsByClassName("js");
+        // alert(liobjarr);
+        for (let i =0;i<liobjarr.length;i++) {
+            liobjarr[i].style.border='1px dashed red';
+        }
+
+        let btnArr = document.getElementsByTagName("button");
+        for (let i =0;i<btnArr.length;i++) {
+            btnArr[i].style.border='3px solid red';
+        }
+    }
+    </script>
+
+    <hr>
+    <button id='btn'>Click</button>
+    <button>cliek</button>
+    <hr>
+    <ul>
+        <li id="html">HTML</li>
+        <li id="css">CSS</li>
+        <li id="js">JS</li>
+        <li id="js">Java</li>
+    </ul>
+</body>
+</html>
