@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circle {
+            background-color: blueviolet;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>window객체의 setTimeout()/clearTimeout()활용</h2>
+    <h2>window객체의 setInterval()/clearInterval()활용</h2>
+    <button onclick="show()">Click Me</button>
+    <button onclick="go()">Go Go</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="goGoogle()">3초 뒤에 구글로 이동</button>
+    <button onclick="move()">Move</button>
+    <hr>
+    <div id="circle"></div>
+
+    <script>
+        let wid = null;
+        const show = function() {
+            // let obj = document.getElementById('circle');
+            let obj = document.querySelector("#circle"); //선택자 유형으로
+            obj.style.display = 'block';
+            obj.style.backgroundColor = 'skyblue';
+            //하이픈 대신 하이픈 앞 문자를 대문자화
+
+            // alert(obj);
+        }
+        const go=function() {
+            let obj = document.querySelector("#circle");
+            //window.setTimeout(함수, 밀리초(수)) : 밀리초 이후에 함수를 한 번만 호출
+            wid = window.setTimeout(move, 3000);
+        }
+        const stop=function() {
+            window.clearTimeout(wid); //setTimeout <==> clearTimeout
+        }
+        const move=function() {
+            let obj = document.querySelector("#circle");
+            obj.style.display = 'block';
+            obj.style.position = 'absolute';
+            obj.style.left = '500px';
+        }
+        const goGoogle = function(){
+            window.setTimeout(google, 3000);
+        }
+
+        const google = function() {
+            window.location.href = "http://www.google.com";
+        }
+    </script>
+</body>
+</html>
