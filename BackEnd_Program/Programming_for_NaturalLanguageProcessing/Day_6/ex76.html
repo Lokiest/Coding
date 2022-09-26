@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 450px;
+            padding: 3px;
+        }
+        #chat {
+            width: 500px;
+            height: 500px;
+            border: 1px solid silver;
+            margin: 1em;
+        }
+    </style>
+    <script>
+        window.onload=function() {
+            let input1 = document.querySelector('#msg');
+            let chat1 = document.querySelector('#chat');
+
+            input1.onkeydown=function(ewr){
+                // alert(ewr.keyCode);
+                // console.log(this.value);
+                if (ewr.keyCode == 13) {
+                    let str = this.value;
+                    chat1.innerHTML+=`<h3>${str}</h3>`;
+                    this.value = '';
+                    this.focus();
+                }
+            console.log(ewr.target);
+            ewr.target.style.border='3px solid red';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label for="msg">메세지 : </label>
+        <input type="text" name="msg" id="msg">
+    </div>
+    <div id="chat">
+
+    </div>
+</body>
+</html>
