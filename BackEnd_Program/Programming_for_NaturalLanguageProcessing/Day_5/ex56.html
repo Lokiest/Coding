@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>if 문</h1>
+    <script>
+        function print(a) {
+            document.write('<h2>',a,'</h2>');
+        }
+        let num = Number(prompt('수 입력'));
+        print(num);
+
+        if (num > 0) {
+            print(`${num}은(는) 양수`);
+        }
+        else if (num < 0) {
+            print(`${num}은(는) 음수`);
+        }
+        else {
+            print(`${num}은(는) 0`);
+        }
+        print('The End')
+        //입력받은 숫자가 짝수이면 "Even", 홀수면 "Odd"를 출력하는 문장을 작성하세요
+        if (num % 2 == 0) {
+            print(`${num}은(는) Even`);
+        }
+        else {
+            print(`${num}은(는) Odd`);
+        }
+        document.write('<hr>');
+        let str = (num % 2 ==0)?"Even":"Odd";
+        print(str);
+    </script>
+</body>
+</html>
