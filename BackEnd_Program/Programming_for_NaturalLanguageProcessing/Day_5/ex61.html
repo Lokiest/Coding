@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>중첩 for문</h1>
+    <script>
+        for(let j = 0;j<3;j++) { //행
+            for(let i = 0;i<5;i++) { //열
+                document.write(`❤️ (${j}, ${i})`);
+            }
+            document.write('<br>');
+        }
+        //❤️
+        //❤️❤️
+        //❤️❤️❤️
+        //❤️❤️❤️❤️
+        //❤️❤️❤️❤️❤️
+
+        for(let j = 0;j<5;j++) {
+            for(let i = 0;i<=j;i++) {
+                document.write(`❤️ (${j}, ${i})`);
+            }
+            document.write('<br>');
+        }
+
+        for (let i=1;i<=9;i++) {
+            let str = `<table border ="1" style="width:150px;">
+                        <tr><th> ${i} 단</th><tr>`;
+        }
+        
+        document.write("<table border>");
+        document.write("<tr>");
+        for(let i=2; i<=9; i++) {
+            document.write("<th>"+i+"단</th>");
+        }
+        document.write("</tr>");
+        document.write("<tr>");
+        for(let i=1; i<=9; i++){
+            for(let j=2; j<=9; j++) {
+                document.write("<td>"+j+"x"+i+"="+i*j+"</td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+        document.write("<hr>");
+    </script>
+</body>
+</html>
