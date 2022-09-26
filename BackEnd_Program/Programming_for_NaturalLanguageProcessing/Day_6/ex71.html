@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>배열의 주요 메서드</h1>
+    <h3>push(): 배열에 새로운 요소를 마지막에 추가한다.</h3>
+    <h3>concat(): 배열의 요소를 모두 합쳐 배열을 만들어 리턴한다.</h3>
+    <h3>join(): 배열 안의 모든 요소를 문자열로 만들어 반환한다.</h3>
+    <h3>pop(): 배열의 마지막 요소를 제거하고 반환한다.</h3>
+    <h3>shift(): 배열의 첫번째 요소를 제거하고 반환한다.</h3>
+    <h3>sort() : 오름차순으로 정렬하여 반환한다.</h3>
+    <hr>
+
+    <script>
+        const a = 10;
+        const fruits = ['banana', 'apple', 'mango', 'melon'];
+
+        fruits.push('kiwi');
+        for (i=0;i<fruits.length;i++) {
+            document.write(`${fruits[i]} , `);
+        }
+        fruits.unshift('lemon');
+        document.write("<br>", fruits);
+        
+        let b = fruits.pop();
+        document.write("<br>", fruits);
+        document.write("<br>", b)
+
+        fruits.shift();
+        document.write("<br>", fruits);
+        fruits.splice(2,1);
+        document.write("<br>", fruits);
+        fruits.splice(1, 0, 'lemon');
+        document.write("<br>", fruits);
+
+        let drinks = ['juice', 'coke', 'coffee'];
+        let arr = fruits.concat(drinks);
+
+        document.write("<br>", arr);
+        document.write("<br>", fruits);
+
+        let str = fruits.join('#');
+        document.write("<br>", str);
+        fruits.push('watermelon');
+        fruits.push('peach');
+        fruits.sort();
+        document.write("<br>", fruits);
+
+        let arr2 = fruits.slice(1, 3);
+        document.write("<br>", arr2);
+
+        fruits.forEach(function(value, index){
+            //value에 배열에 저장된 요소값들이 전달, index에는 배열 인덱스 번호가 전달
+            document.write(`<h2> ${index} : ${value} </h2>`);
+        })
+
+        for (let i in fruits) {
+            document.write(`<h2> ${fruits[i]} </h2>`);
+        }
+    </script>
+</body>
+</html>
