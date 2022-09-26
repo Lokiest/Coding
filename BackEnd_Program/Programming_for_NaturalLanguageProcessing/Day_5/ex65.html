@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BOM (Browser Object Model) - window객체</h1>
+    <button onclick="openWin()">팝업창 열기</button>
+    <button onclick="closeWin()">팝업창 닫기</button>
+    <button onclick="changeLoc()">팝업창 위치변경</button>
+    <button onclick="changeSize()">팝업창 크기변경</button>
+    <hr color="red">
+    <script>
+        let win = null;
+        function openWin() {
+            let url = "ex01.html";
+            win = window.open(url, "popup", "width=400px, height=400px, left=100px, top=100px");
+            //win : 새로 띄운 윈도창 참조
+        }
+        function closeWin() {
+            window.close();
+            if (win != null) {
+                win.close();
+            }
+        }
+        const changeLoc=function() {
+            if(win!=null){
+                win.moveTo(300,300);
+            }
+        }
+        const changeSize=function() {
+            if(win!=null){
+                win.resizeTo(700,700);
+            }
+        }
+    </script>
+</body>
+</html>
