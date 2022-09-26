@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button onclick="window.location.href='http://www.naver.com'">네이버 페이지 이동</button> -->
+    <h1>switch~case문을 이용한 실습</h1>
+    prompt로 "가고싶은 포탈 사이트 이름을 입력하세요" 
+    메시지를 띄우고 입력을 받는다. (ex. 네이버, 구글....)<br>
+    switch~case문 이용해서 해당 사이트로 이동하는 프로그램을 작성하세요 (location객체 이용)
+    <hr>
+    <script>
+        var site = prompt('사이트 입력');
+        var url = null;
+        switch(site) {
+            case "네이버": str = '<button onclick="window.location.href=\'http://www.naver.com\'">네이버 페이지 이동</button>'; break;
+            case "구글": str = '<button onclick="window.location.href=\'http://www.google.com\'">구글 페이지 이동</button>'; break;
+            case "다음": str = '<button onclick="window.location.href=\'http://www.daum.net\'">다음 페이지 이동</button>'; break;
+            case "네이트": str = '<button onclick="window.location.href=\'http://www.nate.com\'">네이트 페이지 이동</button>'; break;
+            default: alert('입력오류'); window.location.reload();
+        }
+        document.write(`<h1>${str}</h1>`);
+        
+    </script>
+</body>
+</html>
