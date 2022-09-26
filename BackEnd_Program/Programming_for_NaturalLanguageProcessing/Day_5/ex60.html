@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>반복문 - for</h1>
+    <script>
+        for(let i=1;i<=5;i++) {
+            document.write(`<h3>hello JavaScript ${i}</h3>`);
+        }
+
+        for(let i =5;i>=1;i--) {
+            document.write(`<h3>Hi JavaScript ${i}</h3>`);
+        }
+        //[1]for루프를 이용해서 구구단의 7단을 출력해보세요
+
+
+        //[2] prompt로 구구단의 단을 입력받아서 구구단을 table형태로 출력하세요
+        //    단, 짝수단이면 table의 배경색을 gold로 주고, 홀수단이면 skyblue로 주세요
+        for(let i=1;i<=9;i++) {
+            document.write(`<h3>7 x ${i} = ${(7 * i)}</h3>`);
+        }
+
+        
+        let gugu = Number(prompt('수 입력'));
+        let cr = (gugu % 2 == 0)?"gold":"skyblue";
+        let str = `<table border ="1" style="width:150px; background:${cr};">
+                    <tr><th>${gugu} 단</th><tr>`;
+        for(let i=1;i<=9;i++) {
+            str += `<tr><td align='center';>`
+            str += `${gugu} x ${i} ${(gugu * i)}<br>`;
+            str += `</tr></td>`
+        }
+        str += `</table>`
+        document.write(str);
+    </script>
+</body>
+</html>
