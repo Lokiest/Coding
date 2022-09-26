@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>var, let, const</h1>
+    <script>
+        let print = function(str) {
+            document.write('<h2>' + str + '</h2><br>');
+        }
+        var a = 10; //전역변수
+        let b = 20; //전역변수 block level scope
+        print(a)
+        print(b)
+        if (a > 0) {
+            var a = 300;
+            let b = 400;
+            print("if block 안 a : " + a + "<br>")
+            print("if block 안 b : " + b + "<br>")
+        }
+        print(a)
+        print(b)
+        
+        var x = 'hello';
+        print("x ; " + x + "<br>")
+        var x = 9.12;
+        print("x ; " + x + "<br>")
+
+        let y = 'hi';
+        print("y ; " + y + "<br>")
+        // let y = 3.14;
+        // print("y ; " + y + "<br>")
+
+        print(i, '<br>');
+        // print(j, '<br>');
+        var i = 'tiger'; // var : hoisting 가능
+        let j = 'lion'; // let : hoisting 불가능
+        print(i, '<br>');
+        print(j, '<br>');
+
+        const NONE = 0;
+        //const는 값을 변경 불가
+        let add = 1;
+        print(NONE, '<br>');
+        print(add, '<br>');
+        add = 100;
+        print(add, '<br>');
+        // NONE = 100;
+        // print(NONE, '<br>');
+    </script>
+</body>
+</html>
