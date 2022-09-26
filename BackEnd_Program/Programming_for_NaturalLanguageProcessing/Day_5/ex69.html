@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #000;
+            color:#fff;
+        }
+        #btns{
+            width: 50%;
+            /* border:1px solid red; */
+            margin: auto;
+            padding: 5px;
+            text-align: center;
+        }
+        #btns span{
+            display: inline-block;
+            width: 120px;
+            height: 30px;
+            padding: 5px;
+            border: 1px solid white;
+        }
+        #movies{
+            width:760px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        #movies img{
+            width:150px;
+            height:210px;
+            border:1px solid white;
+        }
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="btns">
+            <span id="btn1" onclick="showMovie()">현재 상영작</span>
+            <span id="btnPlay">Play</span>
+            <span id="btnStop">Stop</span>
+        </div>
+        <div id="movies">
+            
+        </div>
+    </div>
+    <script>
+        let movies=['m1.JPG','m2.JPG','m1.JPG','m2.JPG','m1.JPG'];
+        let obj=document.getElementById('movies');
+        let btnPlay=document.querySelector("#btnPlay");
+        let btnStop=document.querySelector('#btnStop');
+        let wid=null;
+        let x=20;//x좌표
+        let i=1;//x좌표의 증가치
+    //showMovie()함수 만들어서 배열에 저장된 요소만큼 반목문 돌면서<img src='이미지파일명'>
+    //브라우저에 문자열 출력하기
+    function showMovie(){
+        let str='';
+        for(let i=0;i<movies.length;i++){
+            let movie=movies[i];
+            str+=`<img src="../images/${movie}">`;            
+        }
+        //document.write(str); //
+        obj.innerHTML=str;
+    }//------------------------
+
+    btnPlay.onclick=function(){
+        obj.style.position='absolute';
+        if(wid==null){
+            wid=setInterval(function(){
+                console.log(document.body.clientWidth);
+                if(x>=(document.body.clientWidth-760)){
+                    i=-1;
+                }
+                if(x<=0){
+                    i=1;
+                }
+                obj.style.left=`${x}px`;
+                x+=i;
+            }, 20) //0.02
+        }
+    }//---------------------------
+    btnStop.addEventListener('click', function(){
+        if(wid!=null){
+            clearInterval(wid);
+            wid=null;
+        }
+    })//---------------------------
+
+
+    window.onload=showMovie;
+    </script>
+</body>
+</html>
