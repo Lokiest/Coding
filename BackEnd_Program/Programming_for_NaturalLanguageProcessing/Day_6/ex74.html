@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*event처리 방법
+        [1] html태그 내에서 이벤트 핸들러를 기술하는 방법
+        [2] literal방식으로 이벤트 핸들러를 기술
+        [3] addEventListener(이벤트종류, 핸들러함수)
+        */
+        window.onload= init;
+        function init() {
+            let objArr=document.querySelectorAll('.e1');
+
+            objArr[2].addEventListener('mouseover', function(){
+                this.style.fontSize = "1.5em";
+                this.style.color = "grey";
+            })
+            objArr[2].addEventListener('mouseout', function(){
+                this.style.fontSize = "";
+                this.style.color = "";
+            })
+        }
+    </script>
+</head>
+<body>
+    <h1 class="e1">이벤트 처리 1</h1>
+    <h1 class="e1">이벤트 처리 2</h1>
+    <h1 class="e1">이벤트 처리 3</h1>
+</body>
+</html>
