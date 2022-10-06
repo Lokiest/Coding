@@ -1,39 +1,59 @@
 package day07;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+interface inter1 {
+	void a();
+	int b();
+}
 
-public class PongGui extends JFrame {
-	
-	Container cp;
-	JPanel p1, p2;
-	CardLayout card;
-	
-	public PongGui() {
-		cp = this.getContentPane();
-		cp.setLayout(card = new CardLayout()); //카드 레이아웃 설정
-		p1 = new MyLoginPanel();
-		p2 = new JPanel();
-		
-		cp.add(p1, "Log in");
-		cp.add(p2, "Home");
-		
-		p1.setBackground(Color.yellow);
-		p2.setBackground(Color.pink);
-		
-//		card.show(cp, "Home");
-//		p1.btnLogin.addActionListener(this);
-		
-		this.setSize(400, 600);
-		this.setLocation(500, 500);
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+interface inter2 {
+	double pi = 3.14;
+}
+
+//인터페이스가 인터페이스 상속받을 경우는 extends, 다중 상속 가능
+interface inter3 extends inter1, inter2{
+	void c();
+}
+
+abstract class AbsClass {
+	abstract void d();
+}
+
+//mydemo가 AbsClass, inter3 상속받은 뒤 에러 없도록
+class mydemo extends AbsClass implements inter3{
+	public void  a() {}
+	public int b() {return 0;}
+	public void c() {
+		System.out.println("c()---------");
 	}
+	void d() {
+		System.out.println("d()---------");
+	}
+}
+
+public class InterfaceTest2 {
 
 	public static void main(String[] args) {
-		new PongGui();
+		// 객체 생성해서  a b c d 호출하고 pi 출력
+		mydemo md = new mydemo();
+		md.a();
+		System.out.println(md.b());
+		md.c();
+		md.d();
+		
+		inter1 im1 = new mydemo();
+		inter2 im2 = new mydemo();
+		inter3 im3 = new mydemo();
+		AbsClass ac = new mydemo();
+		
+		im1.a();
+		System.out.println(im1.b());
+		System.out.println(im2.pi);
+		System.out.println(mydemo.pi);
+//		mydemo.pi = 666; [x]
+		
+		im3.a();
+		System.out.println(im3.b() + 3);
+		im3.c();
 
 	}
 
