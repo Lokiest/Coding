@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: navy;
+}
+#wrap {
+    width: 90%;
+    margin: auto;
+    max-width: 1024px;
+    height: auto;
+}
+div.clear {
+    clear: both; /*float 속성을 해제*/
+}
+/* header------------------------------ */
+header {
+    border: 1px solid silver;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+header img{
+    width:98%;
+    text-align: center;
+}
+/* nav----------------------------------- */
+nav { 
+    padding: 5px;
+    height: 30px;
+    background-color: rgba(225, 232, 240, 1);
+}
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li{
+    float:left;
+    padding: 0 5px 0 0;
+}
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 2px 20px 3px 20px;
+    color: rgb(50, 50, 50);
+}
+nav ul li a:hover {
+    background-color: rgb(100, 150, 255);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+/* article------------------------------- */
+article {
+    border: 1px solid silver;
+    border-radius: 5px;
+    width: 75.3%;
+    float: left;
+    padding: 10px;
+    margin: 5px 0;
+    height: 500px;
+
+
+}
+article section {
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    padding: 10px ;
+    margin: 5px ;
+    width: 48%;
+    float: left;
+}
+/* asdie--------------------------------------- */
+aside { 
+    width: 24.3%;
+    border: 1px solid silver;
+    border-radius: 5px;
+    float: right;
+    padding: 10px;
+    margin: 5px 0;
+    height: 500px;
+}
+aside nav {
+    background-color: none;
+    border: none;
+}
+aside nav ul{
+    list-style: none;
+}
+aside nav ul li {
+    padding: 0 5px;
+}
+aside nav ul li a {
+    display: block;
+    padding: 5px 0;
+    width: 170px;
+}
+aside nav ul li a:hover {
+    background-color: transparent;
+    color: navy;
+    font-weight: bold;
+
+}
+/* footer ------------------------------------------ */
+footer {
+    background-color: rgba(230, 255, 240, 1);
+    height: 50px;
+    line-height: 30px;
+    padding: 10px 20px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
