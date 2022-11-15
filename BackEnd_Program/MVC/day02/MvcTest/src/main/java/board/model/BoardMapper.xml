@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board.model.BoardMapper">
+	<select id="totalCount"  resultType="_int" >
+	<!-- resultType : _int (기본자료형 int형), int (래퍼클래스 java.lang.Integer)  -->
+		select count(num) cnt from board
+	</select>
+	
+	<insert id="insertBoard" parameterType="board.model.BoardVO">
+		insert into board(num, subject, content,userid,wdate, filename, filesize)
+		values(board_seq.nextval, #{subject}, #{content:VARCHAR}, #{userid}, systimestamp,#{filename:VARCHAR},#{filesize:NUMERIC})
+		<!--  BoardVO객체의 getSubject()를 호출해서 #{subject}  값으로 셋팅한다
+			ps.setString(1, vo.getSubject())
+		-->
+	</insert>
+	<!-- #{num} #{value} -->
+	
+	<select id="listBoard" resultType="board.model.BoardVO">
+		select * from board order by num desc
+	</select>
+	
+	<select id="viewBoard" resultType="board.model.BoardVO" parameterType="_int">
+		select * from board where num=#{value}
+	</select>	
+	
+	<delete id="deleteBoard">
+		delete from board where num=#{value}
+	</delete>
+	
+</mapper>
+
+
+
