@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <style>
+        body *{
+            border: thin solid gray;
+            margin: 5px;
+            padding: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        $(function() {
+            //계층 선택자
+            //[1] 선택자 > 자식선택자: 특정 요소 바로 밑에 있는
+            //			자식 요소를 선택한다.		
+            //[2] 선택자 자손선택자 : 특정 요소 안에 포함된 모든
+            //			자손 요소를 선택한다
+
+            //[문제1] 아이디가 div0인 요소의 자식 p요소를 선택해서
+            //          배경색을 yellow로 주세요
+            $("#div0>p").css('background-color', 'yellow');
+
+            //[문제2] div0의 자손 p요소를 선택해서 글자색을 blue
+		//			로 주세요
+            $("#div0 p").css('color', 'blue');
+
+            //[3] 선택자 + 형제선택자: 바로 다음(옆)의 형제요소 1개를 선택한다.
+            //[4] 선택자 ~ 형제선택자: 특정 요소 다음에 오는 모든 형제요소를 선택							        
+
+            /*[문제3] 아이디가 p1인 요소 바로 뒤에오는 p요소를
+                    선택해서 배경색을 maroon으로, 글자색은 흰색으로 주세
+            */
+            $('#p1+p').css('background-color', 'maroon')
+                        .css('color', 'white')
+
+            /*
+            [문제4] 아이디가 span1인 요소의 모든 형제 요소를
+                    선택해서 배경색을 navy, 글자색을 흰색으로 주세요
+            */
+            $('#span1~span').css('background-color', 'navy')
+                            .css('color', 'white')
+
+            //[문제5] div2 자식 요소 중 클래스가 class1인 요소를
+            //		찾아서 테두리를 'thick solid skyblue'로 주세요
+
+            $('#div2>.class1').css('border', 'thick solid skyblue')
+
+            //[문제6] div0의 마지막 자식요소를 선택해서
+            //"막내 아들"이라는 텍스트를 넣어주세요
+            //border도 주세요. thick dotted red
+            $('#div0>:last').css('border', 'thick dotted red').html("<h3>막내</h3>")
+            //:last > 필터선택자 ":필터" 
+        })
+    </script>
+</head>
+<body>
+    <h1>jQury계층 선택자</h1>
+
+<div id="div0">div0
+	<div id="div1">div1
+		<span id="span1">span1</span>
+		<span id="span2">span2</span>
+		<span id="span3">span3</span>
+		<span>span4</span>
+	</div>
+	<div id="div2">div2
+		<p id="p1">p1</p>
+		<p id="p2" class="class1 class2">p2 class1 class2</p>
+		<p id="p3" class="class1">p3 class1</p>
+		<p id="p4">p4</p>
+	</div>
+	<div id="div3" class="class2">div3 class2</div>
+	<p>p</p>
+	<p></p>
+</div>
+
+</body>
+</html>
