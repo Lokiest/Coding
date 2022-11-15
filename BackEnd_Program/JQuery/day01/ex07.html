@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>ex7_sample.html</title>
+	<style>
+		body{
+			font-size:18px;
+		}
+		span.books, span.movies, span.music{
+			width:100px;
+			float:left;
+			text-align:center;
+			margin:5px;
+			border: 2px solid navy;
+			font-weight:bold;
+			
+		}
+	</style> 
+<!-- CDN jquery------------------------------------------------- -->
+<script src="jquery-3.6.1.min.js"></script>
+<!-- -------------------------------------------------------------------- -->
+<script type="text/javascript">
+//html(), text(), attr(), show(), hide(), hover(), click()
+$(function(){
+	$('p').hide();
+
+	$('span').on('click', function() {
+		$('p').hide();
+		let cls = $(this).attr("class");
+		// alert(cls)
+		$('p.'+cls).show(1000)
+	})
+
+})
+	
+</script>
+	       
+  </head>
+<body>
+<div id="menu">
+    <span class="books" id="booksbutton"> Books </span>
+    <span class="movies" id="moviesbutton"> Movies  </span>
+    <span class="music" id="musicbutton"> Music </span><br><br>
+</div>
+<p class="books">
+Books of different subjects available at reasonable prices. Ranging from web 
+development, programming languages and text books all are available at heavy discount. 
+Shipping is free. Also available in stock the popular Magazines, E-books and Tutoriasl CDs at 
+affordable price
+</p>
+<p class="movies">
+Find new movie reviews & latest hollywood movie news. Includes new movie trailers, latest hollywood releases, movie showtimes, entertainment news, celebrity interviews 
+etc. Also find Hollywood actress, actor, videos biography, filmography, photos, wallpapers, 
+music, jokes live tv channels at your doorsteps</p>
+<p class="music">
+Find music videos, internet radio, music downloads and all the latest music 
+news and information. We have a large collection of music and songs classified by type, 
+language and region. All downloads are streamed through RealAudio. You can also watch free 
+music videos, tune in to AOL Radio, and search for your favorite music artists.</p>
+</body>
+</html>
