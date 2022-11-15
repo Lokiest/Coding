@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex06.html</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+        $(function() {
+            //[1] 내용필터  요소:contains('값'): '값'을 내용으로 포함하고 있는 요소를 선택
+        
+            //[2] 요소:has('요소')
+            //[3] 요소:empty  :비어있는 요소를 찾아준다.	
+            
+            /*[문제1] li요소 중 'ap'라는 값을 포함하고 있는 요소를
+                    찾아서 글자색을 maroon으로 주세요*/
+            $('li:contains("ap")').css('color','maroon')
+
+            /*[문제2] li요소를 가지고 있는 ul요소를 찾아서
+                테두리를 3px inset green으로 주세요
+                안쪽 여백은 10px로 주세요*/       
+            $('ul:has("li")').css('border','3px inset green').css('padding','10px')
+            /*[문제3] li요소중 비어있는 요소를 찾아서 마우스를 오버하면
+                    '비어있어요'라는 텍스트를 보여주고
+                    마우스를 아웃하면 텍스트가 사라지도록 하세요
+                    
+                    요소.on('이벤트종류',함수)         */
+            $('li:empty').on('mouseover', function(){
+                $(this).text('Empty')
+            }).on('mouseout', function() {
+                $(this).text('')
+            })
+
+            //[4] 보임필터 선택자  [요소:hidden][요소:visible]
+		    /*		: 화면에 보이지 않거나 보이는 요소를 찾아주는 필터
+		    - 보이지 않는 경우
+		    	1) display:none
+		    	2) input type이 hidden인 경우
+		    	3) width나 height속성 값이 0
+		    	4) 부모 요소가 보이지 않거나 숨겨져있을 경우
+		    	cf> 참고로 visibility:hidden이거나 opacity:0 
+                    인 요소들은 선택되지 않는다.		    	
+            */
+            /*[문제4] 감춰진 ul요소를 찾아서 3초내로 등장시킨 뒤,
+                    다시 5초내로 감추세요*/
+            $("ul:hidden").show(3000).hide(5000);
+
+                    
+            /*[문제5] 보여진 li요소를 찾아서 5초내로 다시 감추세요        */
+            $('liLvisible').hide(5000)
+
+        })
+    </script>
+</head>
+<body>
+    <h1>jQuery내용필터, 보임필터 선택자</h1>
+<div id="panel">
+	<ul class="navi1">
+		<li>apple</li>
+		<li style="display:none">banana</li>
+		<li>grape</li>
+		<li></li>
+	</ul>
+	<ul class="navi2" style="display:none">
+		<li>tiger</li>
+		<li>lion</li>
+		<li>fox</li>
+		<li></li>		
+	</ul>
+</div>
+</body>
+</html>
