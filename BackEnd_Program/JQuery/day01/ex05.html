@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex05.html</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+        $(function() {
+            //[1]요소:eq(n) : 인덱스가 n인 요소를 선택
+            //[2]요소:gt(n) : 인덱스가 n보다 큰 요소를 선택
+            //[3]요소:lt(n) : 인덱스가 n보다 작은 요소를 선택
+            //[4]요소:first : 첫번째 요소 선택
+            //[5]요소:last : 마지막 요소 선택
+            //[6]요소:even : 짝수번째 선택
+            //[7]요소:odd : 홀수번째 선택
+            //[8]요소:first-child: 각각의 소속된 요소 중 첫번째 요소를 선택
+            //[p]요소:last-child: 각각의 소속된 요소 중 마지막 요소를 선택
+				
+		    //[문제1] 모든 li요소에 대해 글자색을 blue로 주세요
+            $('li').css('color', 'blue')
+
+            //[문제2] li요소 중에서 인덱스 번호가 3인 요소를 찾아서
+            //       배경색을 pink로 주세요
+            $('li:eq(3)').css('background-color', 'pink')
+
+            //[문제3] 클래스가 navi2인 요소의 자식 li중 인덱스가 3인 요소를
+            //       찾아서 글자색을 aqua, 글자크기는 22pt로 주세요
+            $('.navi2>li:eq(3)').css('color', 'aqua').css('font-size','22pt')
+
+            //[문제4] li요소 중 인덱스가 5보다 큰 요소만 선택해서
+            //       글자 크기를 20pt로 주세요
+            $('li:gt(5)').css('font-size','20pt')
+
+            /*[문제5] tr요소 중 첫번째 요소만 찾아서 높이 40px
+            서체 bold, 배경색 beige 
+            테두리 thick solid gold로 주세요*/
+            $('tr:first').css({
+                height:'40px',
+                fontWeight:'bold',
+                backgroundColor:'beige',
+                border:'thick solid gold'
+            })
+
+            /*[문제6] tr요소 중 홀수번째 요소만 찾아서 배경색을
+                #aabbcc로 주세요*/
+            $('tr:odd').css('background','#aabbcc')
+
+            $('li:first').css('color','red').css('font-size','20pt')
+            $('li:first-child').css('background-color','#cba')
+        })
+    </script>
+</head>
+<body>
+    <h1>jQuery필터 선택자</h1>
+    <h2>필터선택자는 앞에 콜론(:)을 붙인다.</h2>
+    <div id="panel">
+        <ul class="navi1">
+            <li>index0</li>
+            <li>index1</li>
+            <li>index2</li>
+            <li>index3</li>
+        </ul>
+        <ul class="navi2">
+            <li>index0</li>
+            <li>index1</li>
+            <li>index2</li>
+            <li>index3</li>
+            <li>index4</li>
+        </ul>
+        
+        <table width="400px" border="1">
+            <tr>
+                <td>번호</td>
+                <td>제목</td>
+                <td>작성자</td>
+                <td>작성일</td>
+            </tr>
+            <tr>
+                <td>번호</td>
+                <td>제목</td>
+                <td>작성자</td>
+                <td>작성일</td>
+            </tr>
+            <tr>
+                <td>번호</td>
+                <td>제목</td>
+                <td>작성자</td>
+                <td>작성일</td>
+            </tr>
+            <tr>
+                <td>번호</td>
+                <td>제목</td>
+                <td>작성자</td>
+                <td>작성일</td>
+            </tr>
+            <tr>
+                <td>번호</td>
+                <td>제목</td>
+                <td>작성자</td>
+                <td>작성일</td>
+            </tr>
+        </table>
+    
+    </div>
+    
+</body> 
+</html>
