@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
+        $(function() {
+            //[1] 일반 이벤트 등록 : 객체.on('이벤트종류', 핸들러함수)
+            //[2] 단축 이벤트 등록 : 객체.click(핸들러함수)
+
+            $('#bt').click(function() {
+                alert('hi');
+            })
+
+            $('#bt').on('mouseover', function(){
+                $(this).css('background-color', 'orange');
+            })
+
+            $('#bt').on('mouseout', function(){
+                $(this).css('background-color', '');
+            })
+
+            /*  [문제1] #btOff를 클릭하면 이벤트 리스너가 동작하지 않게
+                되어 #bt에 등록한 이벤트를 제거합시다.
+                - off() : 등록된 모든 이벤트를 제거한다.
+                - off('이벤트'): 특정한 이벤트를 제거
+                - off('이벤트',함수): 특정 이벤트와 핸들러를 제거
+            */
+            $('#btOff').click(function() {
+                $('#bt').off();
+            })
+
+            /* [문제2] #bt2를 클릭하면 '안녕하세요' h1태그 앞에
+                덧붙여주되, 딱 한번만 적용되도록 하세요
+                - one('이벤트',이벤트핸들러) : 해당 이벤트가 한번만 동작함*/
+            $('#bt2').one('click', function(){
+                $('h1').append("<h3>Hi</h3>")
+                .prepend("<h3>bye</h3>");
+            })
+
+            /*[문제3] #g0을 클릭하면 텍스트 글자색을 흰색, 배경색은 navy로
+                주세요.*/
+            $('#g0').click(function() {
+                $(this).css({
+                    color:'white',
+                    backgroundColor:'navy'
+                })
+            })
+
+            //클릭 먼저 동작하고 > href로 이동하려고 함 >> 동작을 막는 방법 
+            // [1] 이벤트 핸들러 함수에서 return false하기
+            // [2] 이벤트 객체의 prevertDefault() 함수 호출하는 방법
+            // [3] 이벤트 객체의 stopPropagation() 함수 호출하는 방법
+            $('#g1').click(function(evt) {
+                $(this).css({
+                    color:'white',
+                    backgroundColor:'pink'
+                })
+                // return false;
+                evt.preventDefault();
+                //연쇄적인 트리거 행동이 중단 (기본행동 취소)
+                // evt.stopPropagation();
+                //버블링 현상 방지
+            })
+
+            //자식에서 발생한 이벤트가 부모에게까지 발생 >> 이벤트 버블링
+            // 막고자 한다면 이벤트객체.stopPropagation(); 함수 호출
+            $('h1').click(function() {
+                $(this).css('background', '#aeb');
+            })
+
+            $('#panel').click(function() {
+                console.log('#panel click')
+                $(this).css('background', 'pink');
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <h1>jQuery 이벤트 처리 및 버블링 막기</h1>
+    <button id='bt'>확인</button>    
+    <button id='btOff'>이벤트 제거(off)</button>
+    <button id='bt2'>클릭 한번만(one)</button>
+    
+    <hr color='red'>
+    
+    <div id='panel'>
+    <h1><a href="#g2" id='g0'>페이지 내에서 이동</a></h1>
+    <h1><a href="http://www.google.com" id="g1">구글로 이동1</a></h1>     
+    <h1><a href="http://www.google.com" id="g2">구글로 이동2</a></h1>           
+    </div>
+    <hr color="blue">
+    <h1>jQuery 이벤트 강제 발생</h1>
+    <h2>trigger() 함수 사용하면 이벤트 강제로 발생</h2>
+    <button id = "b1">button1 (누르면 button2 누른 효과)</button>
+    <button id = "b2">button2</button>
+
+    <script>
+        $('#b1').click(function() {
+            alert('hi b1');
+            //선택자.trigger('이벤트') > 강제로 이벤트 발생시킴
+            $('#b2').trigger('click')
+        })
+
+        $('#b2').click(function() {
+            alert('bye b2');
+        })
+
+    </script>
+</body>
+</html>
