@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board.model.BoardMapper">
+	<sql id="findWhere">
+		<if test="findType!='' and findKeyword!=''">
+			<where>
+				<if test="findType==1">
+					subject like '%'||#{findKeyword}||'%'
+				</if>
+				<if test="findType==2">
+					userid like '%'||#{findKeyword}||'%'
+				</if>
+				<if test="findType==3">
+					content like '%'||#{findKeyword}||'%'
+				</if>
+			</where>
+		</if>
+	</sql>
+	<select id="totalCount"  resultType="_int" parameterType="map">
+	<!-- resultType : _int (기본자료형 int형), int (래퍼클래스 java.lang.Integer)  -->
+		select count(num) cnt from board
+		<include refid="findWhere" />
+	</select>
+	
+	<!-- selectKey 사용하면 시퀀스 증가한 값을 파라미터에 넘어온 vo에 객체에 setting해주는 기능을 갖음 -->
+	<insert id="insertBoard" parameterType="Board">
+		<selectKey keyProperty="num" resultType="int" order="BEFORE">
+			select board_seq.nextval from dual
+		</selectKey>
+		insert into board(num, subject, content, userid, wdate, filename, filesize)
+		values(#{num}, #{subject}, #{content:VARCHAR}, #{userid}, systimestamp,#{filename:VARCHAR},#{filesize:NUMERIC})
+	</insert>
+	
+	<insert id="insertBoard_old" parameterType="board.model.BoardVO">
+		insert into board(num, subject, content,userid,wdate, filename, filesize)
+		values(board_seq.nextval, #{subject}, #{content:VARCHAR}, #{userid}, systimestamp,#{filename:VARCHAR},#{filesize:NUMERIC})
+		<!--  BoardVO객체의 getSubject()를 호출해서 #{subject}  값으로 셋팅한다
+			ps.setString(1, vo.getSubject())
+		-->
+	</insert>
+	<!-- #{num} #{value} -->
+	
+	<select id="listBoard" resultType="Board" parameterType="map">
+		select * from (
+		select a.*, rownum rn from
+		(select * from board 
+		<include refid="findWhere" />
+		order by num desc) a
+		) where rn between #{start} and #{end}
+		<!-- where rn > 0 and rn < 6 -->
+	</select>
+	
+	<select id="listBoard_old" resultType="board.model.BoardVO">
+		select * from board order by num desc
+	</select>
+	
+	<select id="viewBoard" resultType="board.model.BoardVO" parameterType="_int">
+		select * from board where num=#{value}
+	</select>	
+	
+	<delete id="deleteBoard">
+		delete from board where num=#{value}
+	</delete>
+	
+	<update id="updateBoard" parameterType="Board">
+		update board set subject=#{subject}, content=#{content:VARCHAR},
+			wdate=systimestamp
+		<if test="filename!=null and filename!=''">
+			, filename=#{filename}, filesize=#{filesize}
+		</if>
+		where num=#{num}
+	</update>
+	
+</mapper>
+
+
+

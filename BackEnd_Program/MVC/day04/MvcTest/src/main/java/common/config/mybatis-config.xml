@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 타입 별칭 설정 -->
+	<typeAliases>
+		<typeAlias type="board.model.BoardVO" alias="Board"/>
+		<typeAlias type="user.model.UserVO" alias="USer"/>
+	</typeAliases>
+	
+	<!-- 데이터베이스 트랜잭션 관리자 설정 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+				<property name="username" value="multi" />
+				<property name="password" value="tiger" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 매퍼 정의 -->
+	<mappers>
+<!-- 		<mapper resource="org/mybatis/example/BlogMapper.xml" /> -->
+		<mapper resource="board/model/BoardMapper.xml" />
+		<mapper resource="user/model/UserMapper.xml" />
+	</mappers>
+</configuration>
