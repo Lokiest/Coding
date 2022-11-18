@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+body{
+	font-family:Helvetical, sans-serif;
+	font-size:16px;
+	color:navy;
+}
+div#wrap{
+	width:80%;
+	margin:auto;
+}
+#wrap table{	
+	width: 100%;
+	margin: 2em auto;
+	border-collapse: collapse;
+}
+#wrap th{
+	background-color: #afcafc;
+}
+#wrap td{
+	padding: 5px;
+}
+#wrap td:first-child{
+	text-align:center;
+}
+#wrap input{	
+	padding: 8px;
+	border:1px solid silver;
+	width: 80%;
+}
+#wrap button{
+	padding: 5px;
+	background-color: beige;
+	border:1px solid silver;
+	width:200px;
+}
+span.mdate{	
+	float:right;
+	margin-right:10px;
+}
+
+
+
