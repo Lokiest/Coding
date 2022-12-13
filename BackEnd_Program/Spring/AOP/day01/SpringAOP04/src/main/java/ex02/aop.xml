@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- aop context 네임스페이스 추가 -->
+	<!-- 1. Aspect : 공통관심 빈 등록 -->
+	<bean id="common" class="ex02.CommonAspect" />
+	
+	<!-- 2. Target : 핵심 로직 빈 등록 -->
+	<bean id="boardSvc" class="ex02.BoardServiceImpl" />
+	
+	<!-- 3. Pointcut 기술 -->
+	<aop:config>
+		<aop:aspect ref="common">
+			<!-- 포인트컷 표현시 : execution(수식어패턴? 리턴타입 패키지패턴?) -->
+			<aop:pointcut expression="execution(* ex02.BoardServiceImpl.insertBoard(..))" id="point1"/>
+			<!-- 1. aop:before : 메서드가 호출되기 전에 공통관심사항이 적용 -->
+			<!-- <aop:before method="trace1" pointcut-ref="point1" /> -->
+			
+			<!-- 2. aop:after : 메서드가 호출된 후에 적용, 메서드가 정상 실행되도 예외떠도 무조건 적용 -->
+			<!-- <aop:after method="trace2" pointcut-ref="point1" /> -->
+			
+			<!-- 3. aop:after-returning : 메서드가 정상적으로 실행된 후에 적용 -->
+			<!-- <aop:after-returning method="trace3" pointcut-ref="point1" returning="result"/> -->
+			
+			<!-- 4. aop:after-throwing : 메서드 실행 중 예외가 발생했을 때 적용 -->
+			<!-- <aop:after-throwing method="trace4" pointcut-ref="point1" throwing="ex"/> -->
+			
+			<!-- 5. aop:around : 메서드 호출 전 후 예외발생 모든 시점에 적용 가능한 어드바이스 -->
+			<aop:around method="trace5" pointcut-ref="point1" />
+			
+		</aop:aspect>
+	</aop:config>
+
+</beans>
