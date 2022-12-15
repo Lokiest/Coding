@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-3.3.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="com.mongo.web,com.mongo.posts" />
+	
+	<!-- mongo setting ========================================= -->
+	<!-- [1] MongoClient빈 등록 -->
+	<mongo:mongo-client id="mongoClient"  host="localhost" port="27017"/>
+	<!-- [2] MongoDbFactory빈 등록 -->
+	<mongo:db-factory  id="mongoDbFactory" dbname="mydb" mongo-client-ref="mongoClient" />
+	
+	<!-- [3] mongodb _class 필드를 저장하지 않기 위한 설정  -->
+	<beans:bean id="mappingContext" class="org.springframework.data.mongodb.core.mapping.MongoMappingContext"/>
+	
+	<beans:bean id="defaultMongoTypeMapper" class="org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper">
+		<beans:constructor-arg name="typeKey">
+			<beans:null />
+		</beans:constructor-arg>
+	</beans:bean>
+	
+	<beans:bean id="mappingMongoConverter" class="org.springframework.data.mongodb.core.convert.MappingMongoConverter">
+		<beans:constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+		<beans:constructor-arg name="mappingContext" ref="mappingContext" />
+		<beans:property name="typeMapper" ref="defaultMongoTypeMapper" />
+	</beans:bean>
+	
+	<!-- [4] MongoTemplate빈 등록 -->
+	<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">	
+		<beans:constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+		<beans:constructor-arg name="mongoConverter" ref="mappingMongoConverter" />
+	</beans:bean>
+	
+	<!-- [5] @Repository가 붙은 클래스에서 발생되는 MongoException을 해석할 PostProcessor정의 -->
+	<beans:bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+	
+</beans:beans>
+
+
+
+
+
