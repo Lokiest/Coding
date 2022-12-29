@@ -1,0 +1,15 @@
+@relation 'd-weka.filters.unsupervised.attribute.StringToNominal-R12,14-weka.filters.unsupervised.attribute.NumericToNominal-R1-weka.filters.unsupervised.attribute.Remove-R8,10,13-14-weka.filters.unsupervised.attribute.Remove-R3-weka.filters.unsupervised.attribute.Remove-R5-9'
+
+@attribute pclass {1,2,3}
+@attribute survived {0,1}
+@attribute sex {female,male}
+@attribute age numeric
+
+@data
+1,1,female,29
+1,1,male,0.9167
+1,0,female,2
+1,0,male,35
+1,0,female,20
+1,1,male,48
+1,1,female,63

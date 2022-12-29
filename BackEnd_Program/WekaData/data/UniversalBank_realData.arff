@@ -1,0 +1,20 @@
+@relation UniversalBank-weka.filters.unsupervised.attribute.Remove-R4
+
+@attribute Age numeric
+@attribute Experience numeric
+@attribute Income numeric
+@attribute Family numeric
+@attribute CCAvg numeric
+@attribute Education {Under,Grad,Prof}
+@attribute Mortgage numeric
+@attribute SecuritiesAccount {Yes,No}
+@attribute CDAccount {No,Yes}
+@attribute Online {No,Yes}
+@attribute CreditCard {No,Yes}
+@attribute PersonalLoan {No,Yes}
+
+@data
+60,30,22,1,1.5,Prof,0,No,No,Yes,Yes,No
+38,14,130,4,4.7,Prof,134,No,No,No,No,Yes
+42,18,81,4,2.4,Under,0,No,No,No,No,No
+46,21,193,2,8.1,Prof,0,No,No,No,No,Yes
